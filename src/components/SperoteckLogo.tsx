@@ -1,8 +1,15 @@
 const SperoteckLogo = ({ className = "", size = 400 }: { className?: string; size?: number }) => {
-  const h = size * 0.7;
+  // Two overlapping circles, chain-link style.
+  // Left circle: cx=20, cy=25, r=15
+  // Right circle: cx=40, cy=25, r=15
+  // Centers 20 apart, radius 15 → ~90° quarter removed from each.
+  // Intersection points: (30, 13.82) and (30, 36.18)
+  // Interlocking: left in front at top, right in front at bottom.
+
+  const h = size * 0.83;
   return (
     <svg
-      viewBox="0 0 80 56"
+      viewBox="0 0 60 50"
       width={size}
       height={h}
       className={className}
@@ -19,38 +26,33 @@ const SperoteckLogo = ({ className = "", size = 400 }: { className?: string; siz
         </linearGradient>
       </defs>
 
-      {/* 
-        Two overlapping circles like chain links.
-        Left circle: cx=30, cy=28, r=16  |  Right circle: cx=50, cy=28, r=16
-        Intersection points: (40, 15.5) top and (40, 40.5) bottom
-        Each circle's quarter facing the other is removed.
-        Interlocking: left passes in front at top, right passes in front at bottom.
-      */}
-
-      {/* 1. Left ring BOTTOM half (behind) — from leftmost down-right to bottom intersection */}
+      {/* 1. Left ring BOTTOM half (behind right ring) */}
+      {/* From leftmost (5,25) clockwise along bottom to bottom intersection (30,36.18) */}
       <path
-        d="M 14 28 A 16 16 0 0 1 40 40.5"
+        d="M 5 25 A 15 15 0 0 1 30 36.18"
         fill="none"
         stroke="url(#logoGrad1)"
-        strokeWidth="7"
+        strokeWidth="6"
         strokeLinecap="round"
       />
 
-      {/* 2. Right ring full 270° arc — from bottom intersection, clockwise around right side to top intersection */}
+      {/* 2. Right ring full 270° arc */}
+      {/* From bottom intersection (30,36.18) clockwise to rightmost (55,25) then to top intersection (30,13.82) */}
       <path
-        d="M 40 40.5 A 16 16 0 0 1 66 28 A 16 16 0 0 1 40 15.5"
+        d="M 30 36.18 A 15 15 0 0 1 55 25 A 15 15 0 0 1 30 13.82"
         fill="none"
         stroke="url(#logoGrad2)"
-        strokeWidth="7"
+        strokeWidth="6"
         strokeLinecap="round"
       />
 
-      {/* 3. Left ring TOP half (in front) — from top intersection, counter-clockwise over top to leftmost */}
+      {/* 3. Left ring TOP half (in front of right ring) */}
+      {/* From top intersection (30,13.82) counter-clockwise over top to leftmost (5,25) */}
       <path
-        d="M 40 15.5 A 16 16 0 0 0 14 28"
+        d="M 30 13.82 A 15 15 0 0 0 5 25"
         fill="none"
         stroke="url(#logoGrad1)"
-        strokeWidth="7"
+        strokeWidth="6"
         strokeLinecap="round"
       />
     </svg>
