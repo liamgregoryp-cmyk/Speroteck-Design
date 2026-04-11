@@ -19,43 +19,52 @@ const SperoteckLogo = ({ className = "", size = 400 }: { className?: string; siz
           <stop offset="0%" stopColor="hsl(82, 75%, 45%)" />
           <stop offset="100%" stopColor="hsl(82, 75%, 30%)" />
         </linearGradient>
+        <clipPath id="clipTop">
+          <rect x="0" y="0" width="200" height="55" />
+        </clipPath>
+        <clipPath id="clipBottom">
+          <rect x="0" y="55" width="200" height="55" />
+        </clipPath>
       </defs>
-      {/* Left circle - open on the right, passes BEHIND right circle at top, IN FRONT at bottom */}
-      {/* Left circle bottom arc (in front of right circle) */}
-      <path
-        d="M 105 55 A 35 35 0 0 1 70 90 A 35 35 0 0 1 35 55"
+
+      {/* Layer 1: Left circle top half (behind) */}
+      <circle
+        cx="70" cy="55" r="35"
         fill="none"
         stroke="url(#logoGradient)"
         strokeWidth="18"
-        strokeLinecap="round"
+        clipPath="url(#clipTop)"
         className="logo-path-1"
       />
-      {/* Left circle top arc (behind right circle) */}
-      <path
-        d="M 35 55 A 35 35 0 0 1 70 20 A 35 35 0 0 1 105 55"
+
+      {/* Layer 2: Right circle full (on top of left-top) */}
+      <circle
+        cx="130" cy="55" r="35"
+        fill="none"
+        stroke="url(#logoGradient2)"
+        strokeWidth="18"
+        clipPath="url(#clipTop)"
+        className="logo-path-2"
+      />
+
+      {/* Layer 3: Right circle bottom half (behind) */}
+      <circle
+        cx="130" cy="55" r="35"
+        fill="none"
+        stroke="url(#logoGradient2)"
+        strokeWidth="18"
+        clipPath="url(#clipBottom)"
+        className="logo-path-2"
+      />
+
+      {/* Layer 4: Left circle bottom half (on top of right-bottom) */}
+      <circle
+        cx="70" cy="55" r="35"
         fill="none"
         stroke="url(#logoGradient)"
         strokeWidth="18"
-        strokeLinecap="round"
+        clipPath="url(#clipBottom)"
         className="logo-path-1"
-      />
-      {/* Right circle bottom arc (behind left circle) */}
-      <path
-        d="M 95 55 A 35 35 0 0 0 130 90 A 35 35 0 0 0 165 55"
-        fill="none"
-        stroke="url(#logoGradient2)"
-        strokeWidth="18"
-        strokeLinecap="round"
-        className="logo-path-2"
-      />
-      {/* Right circle top arc (in front of left circle) */}
-      <path
-        d="M 165 55 A 35 35 0 0 0 130 20 A 35 35 0 0 0 95 55"
-        fill="none"
-        stroke="url(#logoGradient2)"
-        strokeWidth="18"
-        strokeLinecap="round"
-        className="logo-path-2"
       />
     </svg>
   );
