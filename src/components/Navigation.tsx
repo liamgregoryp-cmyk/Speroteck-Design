@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import SperoteckLogo from "./SperoteckLogo";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -8,8 +9,9 @@ const Navigation = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="/" className="text-sm text-foreground font-extrabold tracking-widest uppercase transition-all duration-300 hover:text-primary hover:scale-110 origin-left">
-          SPEROTECK
+        <a href="/" className="flex items-center gap-2 transition-all duration-300 hover:scale-110 origin-left group">
+          <SperoteckLogo size={32} className="group-hover:drop-shadow-[0_0_8px_hsl(82,75%,42%,0.5)]" />
+          <span className="text-sm text-foreground font-extrabold tracking-widest uppercase group-hover:text-primary">SPEROTECK</span>
         </a>
         
         <div className="hidden md:flex items-center space-x-12">
