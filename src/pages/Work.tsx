@@ -9,61 +9,61 @@ const Work = () => {
   const projects = [
     {
       image: project1,
-      title: "MINIMAL RESIDENCE",
-      location: "NEW YORK, 2024",
-      category: "RESIDENTIAL",
-      description: "A contemporary home focusing on light, space, and material honesty. The design emphasizes clean lines and natural materials.",
-      area: "450 SQM",
-      year: "2024"
+      title: "CANDYFAVORITES.COM",
+      location: "eCOMMERCE IMPLEMENTATION",
+      category: "IMPLEMENTATION",
+      description: "Full-scale Magento implementation for the Internet's first candy store. Backed by McKeesport Candy Co., the oldest wholesale candy company in the nation.",
+      platform: "MAGENTO",
+      year: "ONGOING"
     },
     {
       image: project2,
-      title: "CORPORATE HEADQUARTERS",
-      location: "LONDON, 2023",
-      category: "COMMERCIAL",
-      description: "Modern office space emphasizing collaboration and natural elements. Features flexible workspaces and sustainable design principles.",
-      area: "1200 SQM",
-      year: "2023"
+      title: "CRUISEDIRECT.COM",
+      location: "SERVER & PLATFORM",
+      category: "MANAGED SERVICES",
+      description: "Comprehensive server administration and platform optimization for one of the leading online cruise booking platforms.",
+      platform: "CUSTOM",
+      year: "ONGOING"
     },
     {
       image: project3,
-      title: "CULTURAL CENTER",
-      location: "TOKYO, 2023",
-      category: "CULTURAL",
-      description: "Public architecture that bridges tradition with contemporary design. A space for community gathering and cultural exchange.",
-      area: "800 SQM",
-      year: "2023"
+      title: "SPOTIX.COM",
+      location: "DEVELOPMENT & SUPPORT",
+      category: "MANAGED SERVICES",
+      description: "Reliable web server maintenance and full development support, freeing the in-house team to focus on strategic growth.",
+      platform: "MAGENTO",
+      year: "ONGOING"
     },
     {
       image: project1,
-      title: "URBAN LOFT",
-      location: "BERLIN, 2024",
-      category: "RESIDENTIAL",
-      description: "Industrial heritage meets contemporary living. Raw materials balanced with refined details.",
-      area: "180 SQM",
-      year: "2024"
+      title: "SOUNDOFTRISTATE.COM",
+      location: "STORE OVERHAUL",
+      category: "MIGRATION",
+      description: "Major overhauls including security updates and platform modernization for an open source Magento store.",
+      platform: "MAGENTO",
+      year: "COMPLETED"
     },
     {
       image: project2,
-      title: "GALLERY SPACE",
-      location: "PARIS, 2022",
-      category: "CULTURAL",
-      description: "Minimalist gallery designed to showcase art without distraction. Pure white spaces with carefully controlled lighting.",
-      area: "600 SQM",
-      year: "2022"
+      title: "OFFICE DESIGNS",
+      location: "PLATFORM OPTIMIZATION",
+      category: "IMPLEMENTATION",
+      description: "Complete eCommerce solution for office furniture retailer, optimizing the shopping experience and boosting conversions.",
+      platform: "SHOPIFY",
+      year: "COMPLETED"
     },
     {
       image: project3,
-      title: "BOUTIQUE HOTEL",
-      location: "MILAN, 2023",
-      category: "HOSPITALITY",
-      description: "Luxury hospitality redefined through architectural restraint. Every detail carefully considered for guest experience.",
-      area: "2400 SQM",
-      year: "2023"
+      title: "PANDORA US",
+      location: "ENTERPRISE SOLUTION",
+      category: "IMPLEMENTATION",
+      description: "Enterprise-grade eCommerce solution for the global jewelry brand's US operations.",
+      platform: "SALESFORCE",
+      year: "COMPLETED"
     }
   ];
 
-  const categories = ["ALL", "RESIDENTIAL", "COMMERCIAL", "CULTURAL", "HOSPITALITY"];
+  const categories = ["ALL", "IMPLEMENTATION", "MIGRATION", "MANAGED SERVICES"];
 
   const filteredProjects = activeCategory === "ALL" 
     ? projects 
@@ -73,7 +73,6 @@ const Work = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      {/* Hero Section */}
       <section className="pt-32 pb-20">
         <div className="container mx-auto px-6">
           <div className="max-w-7xl mx-auto">
@@ -82,15 +81,14 @@ const Work = () => {
                 OUR WORK
               </h1>
               <p className="text-xl text-muted-foreground max-w-3xl">
-                A curated selection of our architectural projects, each telling a unique story 
-                through thoughtful design and meticulous attention to detail.
+                A selection of our eCommerce projects, each showcasing our commitment to 
+                delivering exceptional online shopping experiences.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Filter Categories */}
       <section className="pb-16">
         <div className="container mx-auto px-6">
           <div className="max-w-7xl mx-auto">
@@ -101,12 +99,12 @@ const Work = () => {
                   onClick={() => setActiveCategory(category)}
                   className={`text-minimal transition-colors duration-300 relative group ${
                     activeCategory === category 
-                      ? "text-foreground" 
-                      : "text-muted-foreground hover:text-foreground"
+                      ? "text-primary" 
+                      : "text-muted-foreground hover:text-primary"
                   }`}
                 >
                   {category}
-                  <span className={`absolute bottom-0 left-0 w-full h-px bg-foreground transition-transform duration-300 origin-left ${
+                  <span className={`absolute bottom-0 left-0 w-full h-px bg-primary transition-transform duration-300 origin-left ${
                     activeCategory === category 
                       ? "scale-x-100" 
                       : "scale-x-0 group-hover:scale-x-100"
@@ -118,7 +116,6 @@ const Work = () => {
         </div>
       </section>
 
-      {/* Projects Grid */}
       <section className="pb-32">
         <div className="container mx-auto px-6">
           <div className="max-w-7xl mx-auto">
@@ -129,13 +126,13 @@ const Work = () => {
                     <img 
                       src={project.image} 
                       alt={project.title}
+                      loading="lazy"
                       className="w-full h-[60vh] object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute inset-0 bg-foreground/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     
-                    {/* Project Category Badge */}
                     <div className="absolute top-6 left-6 bg-background/90 backdrop-blur-sm px-4 py-2">
-                      <span className="text-minimal text-foreground">
+                      <span className="text-minimal text-primary">
                         {project.category}
                       </span>
                     </div>
@@ -143,7 +140,7 @@ const Work = () => {
                   
                   <div className="space-y-6">
                     <div>
-                      <h3 className="text-2xl lg:text-3xl font-light text-architectural mb-2 group-hover:text-muted-foreground transition-colors duration-500">
+                      <h3 className="text-2xl lg:text-3xl font-light text-architectural mb-2 group-hover:text-primary transition-colors duration-500">
                         {project.title}
                       </h3>
                       <p className="text-minimal text-muted-foreground">
@@ -157,11 +154,11 @@ const Work = () => {
                     
                     <div className="flex gap-8 pt-4 border-t border-border">
                       <div>
-                        <p className="text-minimal text-muted-foreground mb-1">AREA</p>
-                        <p className="text-foreground">{project.area}</p>
+                        <p className="text-minimal text-primary mb-1">PLATFORM</p>
+                        <p className="text-foreground">{project.platform}</p>
                       </div>
                       <div>
-                        <p className="text-minimal text-muted-foreground mb-1">YEAR</p>
+                        <p className="text-minimal text-primary mb-1">STATUS</p>
                         <p className="text-foreground">{project.year}</p>
                       </div>
                     </div>
@@ -173,7 +170,6 @@ const Work = () => {
         </div>
       </section>
 
-      {/* Call to Action */}
       <section className="py-32 bg-muted">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
@@ -183,14 +179,13 @@ const Work = () => {
               Your Project?
             </h2>
             <p className="text-xl text-muted-foreground mb-12">
-              Let's discuss how we can bring your architectural vision to life
+              Let's discuss how we can bring your eCommerce vision to life
             </p>
             <a 
-              href="#contact" 
-              className="inline-block text-minimal text-foreground hover:text-muted-foreground transition-colors duration-300 relative group"
+              href="/contact" 
+              className="inline-block px-10 py-4 bg-primary text-primary-foreground font-medium tracking-wide uppercase text-sm hover:opacity-90 transition-opacity duration-300"
             >
               GET IN TOUCH
-              <span className="absolute bottom-0 left-0 w-full h-px bg-foreground group-hover:bg-muted-foreground transition-colors duration-300"></span>
             </a>
           </div>
         </div>

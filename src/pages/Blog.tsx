@@ -6,7 +6,7 @@ import { blogPosts } from "@/data/blogPosts";
 const Blog = () => {
   const [activeCategory, setActiveCategory] = useState("ALL");
   
-  const categories = ["ALL", "SUSTAINABILITY", "DESIGN", "URBAN PLANNING"];
+  const categories = ["ALL", "PLATFORMS", "MIGRATION", "MANAGED SERVICES"];
   
   const filteredPosts = activeCategory === "ALL" 
     ? blogPosts 
@@ -16,7 +16,6 @@ const Blog = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      {/* Hero Section */}
       <section className="pt-32 pb-20">
         <div className="container mx-auto px-6">
           <div className="max-w-7xl mx-auto">
@@ -25,15 +24,14 @@ const Blog = () => {
                 INSIGHTS
               </h1>
               <p className="text-xl text-muted-foreground max-w-3xl">
-                Exploring the intersection of architecture, design, and human experience 
-                through thoughtful analysis and contemporary perspectives.
+                Expert perspectives on eCommerce platforms, migration strategies, 
+                and managed services to help your online business thrive.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Filter Categories */}
       <section className="pb-16">
         <div className="container mx-auto px-6">
           <div className="max-w-7xl mx-auto">
@@ -44,12 +42,12 @@ const Blog = () => {
                   onClick={() => setActiveCategory(category)}
                   className={`text-minimal transition-colors duration-300 relative group ${
                     activeCategory === category 
-                      ? "text-foreground" 
-                      : "text-muted-foreground hover:text-foreground"
+                      ? "text-primary" 
+                      : "text-muted-foreground hover:text-primary"
                   }`}
                 >
                   {category}
-                  <span className={`absolute bottom-0 left-0 w-full h-px bg-foreground transition-transform duration-300 origin-left ${
+                  <span className={`absolute bottom-0 left-0 w-full h-px bg-primary transition-transform duration-300 origin-left ${
                     activeCategory === category 
                       ? "scale-x-100" 
                       : "scale-x-0 group-hover:scale-x-100"
@@ -61,7 +59,6 @@ const Blog = () => {
         </div>
       </section>
 
-      {/* Blog Posts Grid */}
       <section className="pb-32">
         <div className="container mx-auto px-6">
           <div className="max-w-7xl mx-auto">
@@ -73,13 +70,13 @@ const Blog = () => {
                       <img 
                         src={post.image} 
                         alt={post.title}
+                        loading="lazy"
                         className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className="absolute inset-0 bg-foreground/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       
-                      {/* Category Badge */}
                       <div className="absolute top-4 left-4 bg-background/90 backdrop-blur-sm px-3 py-1">
-                        <span className="text-xs text-foreground font-medium">
+                        <span className="text-xs text-primary font-medium">
                           {post.category}
                         </span>
                       </div>
@@ -94,7 +91,7 @@ const Blog = () => {
                         <span>{post.author}</span>
                       </div>
                       
-                      <h2 className="text-xl lg:text-2xl font-light text-architectural group-hover:text-muted-foreground transition-colors duration-500">
+                      <h2 className="text-xl lg:text-2xl font-light text-architectural group-hover:text-primary transition-colors duration-500">
                         {post.title}
                       </h2>
                       
@@ -103,7 +100,7 @@ const Blog = () => {
                       </p>
                       
                       <div className="pt-4">
-                        <span className="text-minimal text-foreground hover:text-muted-foreground transition-colors duration-300 relative group-hover:underline">
+                        <span className="text-minimal text-primary hover:text-primary/80 transition-colors duration-300 relative group-hover:underline">
                           READ MORE
                         </span>
                       </div>
@@ -116,7 +113,6 @@ const Blog = () => {
         </div>
       </section>
 
-      {/* Newsletter Section */}
       <section className="py-32 bg-muted">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
@@ -124,7 +120,7 @@ const Blog = () => {
               Stay Informed
             </h2>
             <p className="text-xl text-muted-foreground mb-12">
-              Subscribe to our newsletter for the latest insights on architecture and design
+              Subscribe to our newsletter for the latest insights on eCommerce and digital commerce
             </p>
             <div className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
               <input 
@@ -132,7 +128,7 @@ const Blog = () => {
                 placeholder="Enter your email"
                 className="flex-1 px-6 py-4 bg-background border border-border text-foreground placeholder:text-muted-foreground"
               />
-              <button className="px-8 py-4 bg-foreground text-background hover:bg-muted-foreground transition-colors duration-300">
+              <button className="px-8 py-4 bg-primary text-primary-foreground hover:opacity-90 transition-opacity duration-300 font-medium">
                 SUBSCRIBE
               </button>
             </div>
