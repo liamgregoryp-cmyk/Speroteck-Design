@@ -18,18 +18,18 @@ const SperoteckLogo = ({ className = "", size = 400 }: { className?: string; siz
           <stop offset="100%" stopColor="hsl(82, 75%, 38%)" />
         </linearGradient>
       </defs>
-      {/* Top S curve */}
+      {/* Top quarter curve */}
       <path
-        d="M 100 15 C 55 15, 20 45, 20 80 C 20 115, 55 135, 100 135"
+        d="M 100 20 C 100 20, 20 20, 20 100"
         fill="none"
         stroke="url(#logoGradient)"
         strokeWidth="28"
         strokeLinecap="round"
         className="logo-path-1"
       />
-      {/* Bottom S curve */}
+      {/* Bottom quarter curve */}
       <path
-        d="M 100 65 C 145 65, 180 85, 180 120 C 180 155, 145 185, 100 185"
+        d="M 100 180 C 100 180, 180 180, 180 100"
         fill="none"
         stroke="url(#logoGradient2)"
         strokeWidth="28"
