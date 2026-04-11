@@ -1,13 +1,8 @@
 const SperoteckLogo = ({ className = "", size = 400 }: { className?: string; size?: number }) => {
-  // Two interlocking rings like chain links
-  // Left circle at (30, 28), right circle at (58, 28), radius 17
-  // Each has a ~90° gap where the other passes through
-  // Interlocking: left ring in front at top, right ring in front at bottom
-
-  const h = size * 0.6;
+  const h = size * 0.83;
   return (
     <svg
-      viewBox="0 0 88 56"
+      viewBox="0 0 60 50"
       width={size}
       height={h}
       className={className}
@@ -24,53 +19,30 @@ const SperoteckLogo = ({ className = "", size = 400 }: { className?: string; siz
         </linearGradient>
       </defs>
 
-      {/* 
-        Left ring center: (30, 28), r=17
-        Gap: right side, from -40° to +40° 
-        Arc goes from +40° clockwise around to -40° (the long way = 280°)
-        
-        Right ring center: (58, 28), r=17
-        Gap: left side, from 140° to 220°
-        Arc goes from 220° clockwise to 140° (the long way = 280°)
-        
-        Interlocking order:
-        1. Bottom part of left ring (behind right ring at bottom)
-        2. Full right ring 
-        3. Top part of left ring (in front of right ring at top)
-      */}
-
-      {/* Left ring - bottom portion (drawn first, goes behind right ring) */}
+      {/* Left ring bottom half (behind right ring) */}
       <path
-        d="M 42 28
-           A 17 17 0 0 1 30 45
-           A 17 17 0 0 1 18 28"
+        d="M 5 25 A 15 15 0 0 0 30 36.18"
         fill="none"
         stroke="url(#logoGrad1)"
-        strokeWidth="7.5"
+        strokeWidth="5.5"
         strokeLinecap="round"
       />
 
-      {/* Right ring - full 270° arc (gap on left side) */}
+      {/* Right ring 270° arc (gap on left) */}
       <path
-        d="M 46 28
-           A 17 17 0 0 1 58 11
-           A 17 17 0 0 1 75 28
-           A 17 17 0 0 1 58 45
-           A 17 17 0 0 1 46 28"
+        d="M 30 36.18 A 15 15 0 0 0 55 25 A 15 15 0 0 0 30 13.82"
         fill="none"
         stroke="url(#logoGrad2)"
-        strokeWidth="7.5"
+        strokeWidth="5.5"
         strokeLinecap="round"
       />
 
-      {/* Left ring - top portion (drawn last, goes in front of right ring) */}
+      {/* Left ring top half (in front of right ring) */}
       <path
-        d="M 18 28
-           A 17 17 0 0 1 30 11
-           A 17 17 0 0 1 42 28"
+        d="M 30 13.82 A 15 15 0 0 0 5 25"
         fill="none"
         stroke="url(#logoGrad1)"
-        strokeWidth="7.5"
+        strokeWidth="5.5"
         strokeLinecap="round"
       />
     </svg>
