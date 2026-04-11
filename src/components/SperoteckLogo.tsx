@@ -2,6 +2,30 @@ const SperoteckLogo = ({ className = "", size = 400 }: { className?: string; siz
   const width = size;
   const height = size * 0.5;
 
+  // Two circles that interlink like chain links
+  // Left circle center: (62, 50), Right circle center: (138, 50), radius: 34
+  // Each is a ~270° arc (C-shape). Left opens right, right opens left.
+  // They weave: at top right passes over left, at bottom left passes over right.
+
+  const r = 34;
+  const lcx = 62, rcy = 50, rcx = 138;
+  const cy = 50;
+  // Gap angle: 45° each side of opening = 90° total gap
+  const gap = 45;
+  const toRad = (d: number) => (d * Math.PI) / 180;
+
+  // Left C opens to the right (0°). Arc from +gap° to (360 - gap)° clockwise
+  const l_start_x = lcx + r * Math.cos(toRad(-gap));
+  const l_start_y = cy + r * Math.sin(toRad(-gap));
+  const l_end_x = lcx + r * Math.cos(toRad(gap));
+  const l_end_y = cy + r * Math.sin(toRad(gap));
+
+  // Right C opens to the left (180°). Arc from (180-gap)° to (180+gap)° counterclockwise
+  const r_start_x = rcx + r * Math.cos(toRad(180 + gap));
+  const r_start_y = cy + r * Math.sin(toRad(180 + gap));
+  const r_end_x = rcx + r * Math.cos(toRad(180 - gap));
+  const r_end_y = cy + r * Math.sin(toRad(180 - gap));
+
   return (
     <svg
       viewBox="0 0 200 100"
@@ -19,76 +43,51 @@ const SperoteckLogo = ({ className = "", size = 400 }: { className?: string; siz
           <stop offset="0%" stopColor="hsl(82, 75%, 45%)" />
           <stop offset="100%" stopColor="hsl(82, 75%, 30%)" />
         </linearGradient>
-        {/* Clip to only show top half */}
         <clipPath id="topHalf">
           <rect x="0" y="0" width="200" height="50" />
         </clipPath>
-        {/* Clip to only show bottom half */}
         <clipPath id="bottomHalf">
           <rect x="0" y="50" width="200" height="50" />
         </clipPath>
       </defs>
 
-      {/*
-        Two interlinking C-shapes:
-        - Left circle at (65, 50), r=32, opens to the right (~90° gap)
-        - Right circle at (135, 50), r=32, opens to the left (~90° gap)
-        
-        Interlocking: At top, right is in front of left.
-                      At bottom, left is in front of right.
-        
-        Draw order matters for layering within each clip region.
-      */}
-
-      {/* === TOP HALF === */}
-      {/* Left C - top half (behind) */}
+      {/* === TOP HALF: Right C in front of Left C === */}
       <path
-        d="M 97 50 A 32 32 0 1 0 97 50.01"
+        d={`M ${l_start_x.toFixed(1)} ${l_start_y.toFixed(1)} A ${r} ${r} 0 1 0 ${l_end_x.toFixed(1)} ${l_end_y.toFixed(1)}`}
         fill="none"
         stroke="url(#logoGradient)"
         strokeWidth="16"
         strokeLinecap="round"
         clipPath="url(#topHalf)"
-        strokeDasharray="155 46"
-        strokeDashoffset="-23"
         className="logo-path-1"
       />
-      {/* Right C - top half (in front) */}
       <path
-        d="M 103 50 A 32 32 0 1 1 103 50.01"
+        d={`M ${r_start_x.toFixed(1)} ${r_start_y.toFixed(1)} A ${r} ${r} 0 1 0 ${r_end_x.toFixed(1)} ${r_end_y.toFixed(1)}`}
         fill="none"
         stroke="url(#logoGradient2)"
         strokeWidth="16"
         strokeLinecap="round"
         clipPath="url(#topHalf)"
-        strokeDasharray="155 46"
-        strokeDashoffset="-23"
         className="logo-path-2"
       />
 
-      {/* === BOTTOM HALF === */}
-      {/* Right C - bottom half (behind) */}
+      {/* === BOTTOM HALF: Left C in front of Right C === */}
       <path
-        d="M 103 50 A 32 32 0 1 1 103 50.01"
+        d={`M ${r_start_x.toFixed(1)} ${r_start_y.toFixed(1)} A ${r} ${r} 0 1 0 ${r_end_x.toFixed(1)} ${r_end_y.toFixed(1)}`}
         fill="none"
         stroke="url(#logoGradient2)"
         strokeWidth="16"
         strokeLinecap="round"
         clipPath="url(#bottomHalf)"
-        strokeDasharray="155 46"
-        strokeDashoffset="-23"
         className="logo-path-2"
       />
-      {/* Left C - bottom half (in front) */}
       <path
-        d="M 97 50 A 32 32 0 1 0 97 50.01"
+        d={`M ${l_start_x.toFixed(1)} ${l_start_y.toFixed(1)} A ${r} ${r} 0 1 0 ${l_end_x.toFixed(1)} ${l_end_y.toFixed(1)}`}
         fill="none"
         stroke="url(#logoGradient)"
         strokeWidth="16"
         strokeLinecap="round"
         clipPath="url(#bottomHalf)"
-        strokeDasharray="155 46"
-        strokeDashoffset="-23"
         className="logo-path-1"
       />
     </svg>
