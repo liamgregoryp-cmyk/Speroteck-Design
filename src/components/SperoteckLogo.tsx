@@ -1,8 +1,8 @@
 const SperoteckLogo = ({ className = "", size = 400 }: { className?: string; size?: number }) => {
-  const h = size * 0.5;
+  const h = size * 0.55;
   return (
     <svg
-      viewBox="0 0 100 50"
+      viewBox="0 0 110 55"
       width={size}
       height={h}
       className={className}
@@ -18,21 +18,21 @@ const SperoteckLogo = ({ className = "", size = 400 }: { className?: string; siz
           <stop offset="100%" stopColor="hsl(82, 75%, 35%)" />
         </linearGradient>
       </defs>
-      {/* Left ring - 270° arc with gap at bottom-right, so right ring can pass through */}
+      {/* Left circle: centered at (35, 27.5), radius 18. Gap on right side so right ring threads through */}
       <path
-        d="M 50 8
-           A 17 17 0 1 0 50 42
-           A 17 17 0 0 0 38.5 12.5"
+        d="M 53 27.5
+           A 18 18 0 1 1 35 9.5
+           "
         fill="none"
         stroke="url(#logoGrad1)"
         strokeWidth="8"
         strokeLinecap="round"
       />
-      {/* Right ring - 270° arc with gap at top-left, so left ring can pass through */}
+      {/* Right circle: centered at (75, 27.5), radius 18. Gap on left side so left ring threads through */}
       <path
-        d="M 50 42
-           A 17 17 0 1 0 50 8
-           A 17 17 0 0 0 61.5 37.5"
+        d="M 57 27.5
+           A 18 18 0 1 0 75 45.5
+           "
         fill="none"
         stroke="url(#logoGrad2)"
         strokeWidth="8"
