@@ -6,21 +6,21 @@ const Portfolio = () => {
   const projects = [
     {
       image: project1,
-      title: "MINIMAL RESIDENCE",
-      location: "NEW YORK, 2024",
-      description: "A contemporary home focusing on light, space, and material honesty"
+      title: "CANDYFAVORITES.COM",
+      location: "eCOMMERCE PLATFORM",
+      description: "Full-scale Magento implementation for the Internet's first candy store, backed by the oldest wholesale candy company in the nation."
     },
     {
       image: project2,
-      title: "CORPORATE HEADQUARTERS",
-      location: "LONDON, 2023",
-      description: "Modern office space emphasizing collaboration and natural elements"
+      title: "CRUISEDIRECT.COM",
+      location: "PLATFORM MIGRATION",
+      description: "Comprehensive server administration and platform optimization for one of the leading online cruise booking platforms."
     },
     {
       image: project3,
-      title: "CULTURAL CENTER",
-      location: "TOKYO, 2023",
-      description: "Public architecture that bridges tradition with contemporary design"
+      title: "SPOTIX.COM",
+      location: "MANAGED SERVICES",
+      description: "Reliable web server maintenance and development support, freeing the in-house team to focus on strategic growth initiatives."
     }
   ];
 
@@ -29,9 +29,9 @@ const Portfolio = () => {
       <div className="container mx-auto px-6">
         <div className="max-w-7xl mx-auto">
           <div className="mb-20">
-            <h2 className="text-minimal text-muted-foreground mb-4">SELECTED WORK</h2>
+            <h2 className="text-minimal text-primary mb-4">CLIENT STORIES</h2>
             <h3 className="text-4xl md:text-6xl font-light text-architectural">
-              Our Projects
+              Our Work
             </h3>
           </div>
           
@@ -42,9 +42,10 @@ const Portfolio = () => {
                   <img 
                     src={project.image} 
                     alt={project.title}
+                    loading="lazy"
                     className="w-full h-[70vh] object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-foreground/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
                 
                 <div className="mt-8 grid md:grid-cols-3 gap-8">
@@ -52,7 +53,7 @@ const Portfolio = () => {
                     <h4 className="text-2xl font-light text-architectural mb-2">
                       {project.title}
                     </h4>
-                    <p className="text-minimal text-muted-foreground">
+                    <p className="text-minimal text-primary">
                       {project.location}
                     </p>
                   </div>
