@@ -1,12 +1,4 @@
 const SperoteckLogo = ({ className = "", size = 400 }: { className?: string; size?: number }) => {
-  // Two circles that overlap horizontally like chain links.
-  // Left circle: center (30, 28), r=16
-  // Right circle: center (50, 28), r=16
-  // Distance between centers = 20, so they overlap.
-  // Intersection points: (40, 15.5) and (40, 40.5)
-  // Each circle removes the quarter where the other passes through.
-  // Interlocking: left ring in front at top, right ring in front at bottom.
-
   const h = size * 0.7;
   return (
     <svg
@@ -27,25 +19,33 @@ const SperoteckLogo = ({ className = "", size = 400 }: { className?: string; siz
         </linearGradient>
       </defs>
 
-      {/* Layer 1: Left ring BOTTOM half (behind right ring) */}
+      {/* 
+        Two overlapping circles like chain links.
+        Left circle: cx=30, cy=28, r=16  |  Right circle: cx=50, cy=28, r=16
+        Intersection points: (40, 15.5) top and (40, 40.5) bottom
+        Each circle's quarter facing the other is removed.
+        Interlocking: left passes in front at top, right passes in front at bottom.
+      */}
+
+      {/* 1. Left ring BOTTOM half (behind) — from leftmost down-right to bottom intersection */}
       <path
-        d="M 14 28 A 16 16 0 0 0 40 40.5"
+        d="M 14 28 A 16 16 0 0 1 40 40.5"
         fill="none"
         stroke="url(#logoGrad1)"
         strokeWidth="7"
         strokeLinecap="round"
       />
 
-      {/* Layer 2: Right ring FULL 270° arc (gap on left quarter) */}
+      {/* 2. Right ring full 270° arc — from bottom intersection, clockwise around right side to top intersection */}
       <path
-        d="M 40 40.5 A 16 16 0 0 0 66 28 A 16 16 0 0 0 40 15.5"
+        d="M 40 40.5 A 16 16 0 0 1 66 28 A 16 16 0 0 1 40 15.5"
         fill="none"
         stroke="url(#logoGrad2)"
         strokeWidth="7"
         strokeLinecap="round"
       />
 
-      {/* Layer 3: Left ring TOP half (in front of right ring) */}
+      {/* 3. Left ring TOP half (in front) — from top intersection, counter-clockwise over top to leftmost */}
       <path
         d="M 40 15.5 A 16 16 0 0 0 14 28"
         fill="none"
