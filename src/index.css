@@ -137,4 +137,84 @@
       @apply opacity-100 translate-y-0;
     }
   }
+
+  /* Logo spin animation */
+  .animate-logo-spin {
+    animation: logo-spin 20s linear infinite;
+  }
+  
+  @keyframes logo-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* Pulse glow */
+  .animate-pulse-glow {
+    animation: pulse-glow 4s ease-in-out infinite;
+  }
+  .animate-pulse-glow-delayed {
+    animation: pulse-glow 4s ease-in-out 2s infinite;
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.1); }
+  }
+
+  /* Breathe */
+  .animate-breathe {
+    animation: breathe 6s ease-in-out infinite;
+  }
+  
+  @keyframes breathe {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.03; }
+    50% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.06; }
+  }
+
+  /* Float */
+  .animate-float {
+    animation: float 5s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0) scale(1); opacity: 0.3; }
+    50% { transform: translateY(-30px) scale(1.5); opacity: 0.7; }
+  }
+
+  /* Ring pulse */
+  .animate-ring-pulse {
+    animation: ring-pulse 3s ease-in-out infinite;
+  }
+  
+  @keyframes ring-pulse {
+    0%, 100% { opacity: 0.1; transform: scale(1.6); }
+    50% { opacity: 0.3; transform: scale(1.7); }
+  }
+
+  /* Scroll line */
+  .animate-scroll-line {
+    animation: scroll-line 2s ease-in-out infinite;
+  }
+  
+  @keyframes scroll-line {
+    0% { opacity: 0; transform: scaleY(0); transform-origin: top; }
+    50% { opacity: 1; transform: scaleY(1); transform-origin: top; }
+    100% { opacity: 0; transform: scaleY(1); transform-origin: bottom; }
+  }
+
+  /* Logo SVG path animations */
+  .logo-path-1 {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: draw-path 2s ease-out forwards;
+  }
+  .logo-path-2 {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: draw-path 2s ease-out 0.5s forwards;
+  }
+  
+  @keyframes draw-path {
+    to { stroke-dashoffset: 0; }
+  }
 }
