@@ -1,10 +1,10 @@
 const SperoteckLogo = ({ className = "", size = 400 }: { className?: string; size?: number }) => {
   const width = size;
-  const height = size * 0.6;
+  const height = size * 0.55;
 
   return (
     <svg
-      viewBox="0 0 240 140"
+      viewBox="0 0 200 110"
       width={width}
       height={height}
       className={className}
@@ -12,31 +12,59 @@ const SperoteckLogo = ({ className = "", size = 400 }: { className?: string; siz
     >
       <defs>
         <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="hsl(82, 75%, 55%)" />
+          <stop offset="0%" stopColor="hsl(82, 75%, 50%)" />
           <stop offset="100%" stopColor="hsl(82, 75%, 35%)" />
         </linearGradient>
         <linearGradient id="logoGradient2" x1="100%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="hsl(82, 75%, 50%)" />
-          <stop offset="100%" stopColor="hsl(82, 75%, 32%)" />
+          <stop offset="0%" stopColor="hsl(82, 75%, 45%)" />
+          <stop offset="100%" stopColor="hsl(82, 75%, 30%)" />
         </linearGradient>
+        <clipPath id="clipTop">
+          <rect x="0" y="0" width="200" height="55" />
+        </clipPath>
+        <clipPath id="clipBottom">
+          <rect x="0" y="55" width="200" height="55" />
+        </clipPath>
       </defs>
-      {/* Left C - opens to the right */}
-      <path
-        d="M 120 28 C 85 28, 12 35, 12 70 C 12 105, 85 112, 120 112"
+
+      {/* Layer 1: Left circle top half (behind) */}
+      <circle
+        cx="70" cy="55" r="35"
         fill="none"
         stroke="url(#logoGradient)"
-        strokeWidth="26"
-        strokeLinecap="round"
+        strokeWidth="18"
+        clipPath="url(#clipTop)"
         className="logo-path-1"
       />
-      {/* Right C - opens to the left (mirrored) */}
-      <path
-        d="M 120 28 C 155 28, 228 35, 228 70 C 228 105, 155 112, 120 112"
+
+      {/* Layer 2: Right circle full (on top of left-top) */}
+      <circle
+        cx="130" cy="55" r="35"
         fill="none"
         stroke="url(#logoGradient2)"
-        strokeWidth="26"
-        strokeLinecap="round"
+        strokeWidth="18"
+        clipPath="url(#clipTop)"
         className="logo-path-2"
+      />
+
+      {/* Layer 3: Right circle bottom half (behind) */}
+      <circle
+        cx="130" cy="55" r="35"
+        fill="none"
+        stroke="url(#logoGradient2)"
+        strokeWidth="18"
+        clipPath="url(#clipBottom)"
+        className="logo-path-2"
+      />
+
+      {/* Layer 4: Left circle bottom half (on top of right-bottom) */}
+      <circle
+        cx="70" cy="55" r="35"
+        fill="none"
+        stroke="url(#logoGradient)"
+        strokeWidth="18"
+        clipPath="url(#clipBottom)"
+        className="logo-path-1"
       />
     </svg>
   );
