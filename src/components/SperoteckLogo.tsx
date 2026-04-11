@@ -8,33 +8,30 @@ const SperoteckLogo = ({ className = "", size = 400 }: { className?: string; siz
       xmlns="http://www.w3.org/2000/svg"
     >
       <defs>
-        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="hsl(82, 75%, 50%)" />
-          <stop offset="50%" stopColor="hsl(82, 75%, 42%)" />
-          <stop offset="100%" stopColor="hsl(82, 75%, 34%)" />
-        </linearGradient>
-        <linearGradient id="logoGradient2" x1="100%" y1="0%" x2="0%" y2="100%">
+        <linearGradient id="logoGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="hsl(82, 75%, 55%)" />
           <stop offset="100%" stopColor="hsl(82, 75%, 38%)" />
         </linearGradient>
+        <linearGradient id="logoGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="hsl(82, 75%, 50%)" />
+          <stop offset="100%" stopColor="hsl(82, 75%, 35%)" />
+        </linearGradient>
       </defs>
-      {/* Top S curve */}
+      {/* Top arc - opens to the right */}
       <path
-        d="M 100 15 C 55 15, 20 45, 20 80 C 20 115, 55 135, 100 135"
+        d="M 105 100 C 105 55, 65 25, 40 40 C 15 55, 15 95, 55 100"
         fill="none"
-        stroke="url(#logoGradient)"
-        strokeWidth="28"
+        stroke="url(#logoGrad1)"
+        strokeWidth="24"
         strokeLinecap="round"
-        className="logo-path-1"
       />
-      {/* Bottom S curve */}
+      {/* Bottom arc - opens to the left */}
       <path
-        d="M 100 65 C 145 65, 180 85, 180 120 C 180 155, 145 185, 100 185"
+        d="M 95 100 C 95 145, 135 175, 160 160 C 185 145, 185 105, 145 100"
         fill="none"
-        stroke="url(#logoGradient2)"
-        strokeWidth="28"
+        stroke="url(#logoGrad2)"
+        strokeWidth="24"
         strokeLinecap="round"
-        className="logo-path-2"
       />
     </svg>
   );
