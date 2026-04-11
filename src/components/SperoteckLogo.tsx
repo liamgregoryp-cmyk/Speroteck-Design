@@ -1,35 +1,34 @@
 const SperoteckLogo = ({ className = "", size = 400 }: { className?: string; size?: number }) => {
   const width = size;
-  const height = size * 0.55;
+  const height = size * 0.5;
 
-  // Two circles: left at (70,55) r=35, right at (130,55) r=35
-  // They intersect at ~(100, 37) and (100, 73)
-  // Gap angle from each center: acos(30/35) ≈ 31°
-  // We break each circle into two arcs with gaps at intersection points
+  // Two circles that interlink like chain links
+  // Left circle center: (62, 50), Right circle center: (138, 50), radius: 34
+  // Each is a ~270° arc (C-shape). Left opens right, right opens left.
+  // They weave: at top right passes over left, at bottom left passes over right.
 
-  const r = 35;
-  const sw = 18;
-
-  // Left circle center (70,55), gap on right side from -31° to +31°
-  // Arc 1: from +38° to 322° (going clockwise, the big arc avoiding the gap)
-  const lg = 38; // gap half-angle in degrees + a little extra
+  const r = 34;
+  const lcx = 62, rcy = 50, rcx = 138;
+  const cy = 50;
+  // Gap angle: 45° each side of opening = 90° total gap
+  const gap = 45;
   const toRad = (d: number) => (d * Math.PI) / 180;
 
-  // Left circle: gap at 0° (right side). Draw arc from lg° around to -lg° (i.e., 360-lg)
-  const lx1 = 70 + r * Math.cos(toRad(lg));
-  const ly1 = 55 + r * Math.sin(toRad(lg));
-  const lx2 = 70 + r * Math.cos(toRad(-lg));
-  const ly2 = 55 + r * Math.sin(toRad(-lg));
+  // Left C opens to the right (0°). Arc from +gap° to (360 - gap)° clockwise
+  const l_start_x = lcx + r * Math.cos(toRad(-gap));
+  const l_start_y = cy + r * Math.sin(toRad(-gap));
+  const l_end_x = lcx + r * Math.cos(toRad(gap));
+  const l_end_y = cy + r * Math.sin(toRad(gap));
 
-  // Right circle: gap at 180° (left side). Draw arc from (180+lg)° to (180-lg)°
-  const rx1 = 130 + r * Math.cos(toRad(180 + lg));
-  const ry1 = 55 + r * Math.sin(toRad(180 + lg));
-  const rx2 = 130 + r * Math.cos(toRad(180 - lg));
-  const ry2 = 55 + r * Math.sin(toRad(180 - lg));
+  // Right C opens to the left (180°). Arc from (180-gap)° to (180+gap)° counterclockwise
+  const r_start_x = rcx + r * Math.cos(toRad(180 + gap));
+  const r_start_y = cy + r * Math.sin(toRad(180 + gap));
+  const r_end_x = rcx + r * Math.cos(toRad(180 - gap));
+  const r_end_y = cy + r * Math.sin(toRad(180 - gap));
 
   return (
     <svg
-      viewBox="0 0 200 110"
+      viewBox="0 0 200 100"
       width={width}
       height={height}
       className={className}
@@ -44,26 +43,52 @@ const SperoteckLogo = ({ className = "", size = 400 }: { className?: string; siz
           <stop offset="0%" stopColor="hsl(82, 75%, 45%)" />
           <stop offset="100%" stopColor="hsl(82, 75%, 30%)" />
         </linearGradient>
+        <clipPath id="topHalf">
+          <rect x="0" y="0" width="200" height="50" />
+        </clipPath>
+        <clipPath id="bottomHalf">
+          <rect x="0" y="50" width="200" height="50" />
+        </clipPath>
       </defs>
 
-      {/* Left circle - large arc avoiding the right-side gap */}
+      {/* === TOP HALF: Right C in front of Left C === */}
       <path
-        d={`M ${lx1} ${ly1} A ${r} ${r} 0 1 1 ${lx2} ${ly2}`}
+        d={`M ${l_start_x.toFixed(1)} ${l_start_y.toFixed(1)} A ${r} ${r} 0 1 0 ${l_end_x.toFixed(1)} ${l_end_y.toFixed(1)}`}
         fill="none"
         stroke="url(#logoGradient)"
-        strokeWidth={sw}
+        strokeWidth="16"
         strokeLinecap="round"
+        clipPath="url(#topHalf)"
         className="logo-path-1"
       />
-
-      {/* Right circle - large arc avoiding the left-side gap */}
       <path
-        d={`M ${rx1} ${ry1} A ${r} ${r} 0 1 1 ${rx2} ${ry2}`}
+        d={`M ${r_start_x.toFixed(1)} ${r_start_y.toFixed(1)} A ${r} ${r} 0 1 0 ${r_end_x.toFixed(1)} ${r_end_y.toFixed(1)}`}
         fill="none"
         stroke="url(#logoGradient2)"
-        strokeWidth={sw}
+        strokeWidth="16"
         strokeLinecap="round"
+        clipPath="url(#topHalf)"
         className="logo-path-2"
+      />
+
+      {/* === BOTTOM HALF: Left C in front of Right C === */}
+      <path
+        d={`M ${r_start_x.toFixed(1)} ${r_start_y.toFixed(1)} A ${r} ${r} 0 1 0 ${r_end_x.toFixed(1)} ${r_end_y.toFixed(1)}`}
+        fill="none"
+        stroke="url(#logoGradient2)"
+        strokeWidth="16"
+        strokeLinecap="round"
+        clipPath="url(#bottomHalf)"
+        className="logo-path-2"
+      />
+      <path
+        d={`M ${l_start_x.toFixed(1)} ${l_start_y.toFixed(1)} A ${r} ${r} 0 1 0 ${l_end_x.toFixed(1)} ${l_end_y.toFixed(1)}`}
+        fill="none"
+        stroke="url(#logoGradient)"
+        strokeWidth="16"
+        strokeLinecap="round"
+        clipPath="url(#bottomHalf)"
+        className="logo-path-1"
       />
     </svg>
   );
