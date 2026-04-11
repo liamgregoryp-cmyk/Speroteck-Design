@@ -42,7 +42,7 @@ const Hero = () => {
         {/* Animated Logo */}
         <div className={`transition-all duration-[1.5s] ease-out ${loaded ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}`}>
           <div className="relative">
-            <SperoteckLogo size={360} className="animate-logo-spin drop-shadow-[0_0_60px_hsl(82,75%,42%,0.3)]" />
+            <SperoteckLogo size={280} className="animate-logo-spin drop-shadow-[0_0_60px_hsl(82,75%,42%,0.3)]" />
             {/* Logo ring */}
             <div className="absolute inset-0 border border-primary/10 rounded-full scale-[1.6] animate-ring-pulse" />
           </div>
