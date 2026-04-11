@@ -1,35 +1,10 @@
 const SperoteckLogo = ({ className = "", size = 400 }: { className?: string; size?: number }) => {
   const width = size;
-  const height = size * 0.55;
-
-  // Two circles: left at (70,55) r=35, right at (130,55) r=35
-  // They intersect at ~(100, 37) and (100, 73)
-  // Gap angle from each center: acos(30/35) ≈ 31°
-  // We break each circle into two arcs with gaps at intersection points
-
-  const r = 35;
-  const sw = 18;
-
-  // Left circle center (70,55), gap on right side from -31° to +31°
-  // Arc 1: from +38° to 322° (going clockwise, the big arc avoiding the gap)
-  const lg = 38; // gap half-angle in degrees + a little extra
-  const toRad = (d: number) => (d * Math.PI) / 180;
-
-  // Left circle: gap at 0° (right side). Draw arc from lg° around to -lg° (i.e., 360-lg)
-  const lx1 = 70 + r * Math.cos(toRad(lg));
-  const ly1 = 55 + r * Math.sin(toRad(lg));
-  const lx2 = 70 + r * Math.cos(toRad(-lg));
-  const ly2 = 55 + r * Math.sin(toRad(-lg));
-
-  // Right circle: gap at 180° (left side). Draw arc from (180+lg)° to (180-lg)°
-  const rx1 = 130 + r * Math.cos(toRad(180 + lg));
-  const ry1 = 55 + r * Math.sin(toRad(180 + lg));
-  const rx2 = 130 + r * Math.cos(toRad(180 - lg));
-  const ry2 = 55 + r * Math.sin(toRad(180 - lg));
+  const height = size * 0.5;
 
   return (
     <svg
-      viewBox="0 0 200 110"
+      viewBox="0 0 200 100"
       width={width}
       height={height}
       className={className}
@@ -44,26 +19,77 @@ const SperoteckLogo = ({ className = "", size = 400 }: { className?: string; siz
           <stop offset="0%" stopColor="hsl(82, 75%, 45%)" />
           <stop offset="100%" stopColor="hsl(82, 75%, 30%)" />
         </linearGradient>
+        {/* Clip to only show top half */}
+        <clipPath id="topHalf">
+          <rect x="0" y="0" width="200" height="50" />
+        </clipPath>
+        {/* Clip to only show bottom half */}
+        <clipPath id="bottomHalf">
+          <rect x="0" y="50" width="200" height="50" />
+        </clipPath>
       </defs>
 
-      {/* Left circle - large arc avoiding the right-side gap */}
+      {/*
+        Two interlinking C-shapes:
+        - Left circle at (65, 50), r=32, opens to the right (~90° gap)
+        - Right circle at (135, 50), r=32, opens to the left (~90° gap)
+        
+        Interlocking: At top, right is in front of left.
+                      At bottom, left is in front of right.
+        
+        Draw order matters for layering within each clip region.
+      */}
+
+      {/* === TOP HALF === */}
+      {/* Left C - top half (behind) */}
       <path
-        d={`M ${lx1} ${ly1} A ${r} ${r} 0 1 1 ${lx2} ${ly2}`}
+        d="M 97 50 A 32 32 0 1 0 97 50.01"
         fill="none"
         stroke="url(#logoGradient)"
-        strokeWidth={sw}
+        strokeWidth="16"
         strokeLinecap="round"
+        clipPath="url(#topHalf)"
+        strokeDasharray="155 46"
+        strokeDashoffset="-23"
         className="logo-path-1"
       />
-
-      {/* Right circle - large arc avoiding the left-side gap */}
+      {/* Right C - top half (in front) */}
       <path
-        d={`M ${rx1} ${ry1} A ${r} ${r} 0 1 1 ${rx2} ${ry2}`}
+        d="M 103 50 A 32 32 0 1 1 103 50.01"
         fill="none"
         stroke="url(#logoGradient2)"
-        strokeWidth={sw}
+        strokeWidth="16"
         strokeLinecap="round"
+        clipPath="url(#topHalf)"
+        strokeDasharray="155 46"
+        strokeDashoffset="-23"
         className="logo-path-2"
+      />
+
+      {/* === BOTTOM HALF === */}
+      {/* Right C - bottom half (behind) */}
+      <path
+        d="M 103 50 A 32 32 0 1 1 103 50.01"
+        fill="none"
+        stroke="url(#logoGradient2)"
+        strokeWidth="16"
+        strokeLinecap="round"
+        clipPath="url(#bottomHalf)"
+        strokeDasharray="155 46"
+        strokeDashoffset="-23"
+        className="logo-path-2"
+      />
+      {/* Left C - bottom half (in front) */}
+      <path
+        d="M 97 50 A 32 32 0 1 0 97 50.01"
+        fill="none"
+        stroke="url(#logoGradient)"
+        strokeWidth="16"
+        strokeLinecap="round"
+        clipPath="url(#bottomHalf)"
+        strokeDasharray="155 46"
+        strokeDashoffset="-23"
+        className="logo-path-1"
       />
     </svg>
   );
