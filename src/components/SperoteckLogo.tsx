@@ -1,26 +1,21 @@
 const SperoteckLogo = ({ className = "", size = 400 }: { className?: string; size?: number }) => {
   const width = size;
-  const height = size * 0.6;
+  const height = size * 0.5;
 
-  // Two interlocking C-shapes (like chain links)
-  // Left C: center (58,55), opens right. Right C: center (102,55), opens left.
-  const r = 30;
-  const sw = 14;
-  const lcx = 52, rcx = 108, cy = 55;
-  const gap = 40; // degrees from opening direction
+  const r = 38;
+  const sw = 15;
+  const lcx = 55, rcx = 125, cy = 55;
+  const gap = 38;
   const toRad = (d: number) => (d * Math.PI) / 180;
 
-  // Left C opens right (0°): arc from +gap to -gap (going the long way around)
   const ls = { x: lcx + r * Math.cos(toRad(gap)), y: cy + r * Math.sin(toRad(gap)) };
   const le = { x: lcx + r * Math.cos(toRad(-gap)), y: cy + r * Math.sin(toRad(-gap)) };
-
-  // Right C opens left (180°): arc from (180-gap) to (180+gap) (going the long way)
   const rs = { x: rcx + r * Math.cos(toRad(180 - gap)), y: cy + r * Math.sin(toRad(180 - gap)) };
   const re = { x: rcx + r * Math.cos(toRad(180 + gap)), y: cy + r * Math.sin(toRad(180 + gap)) };
 
   return (
     <svg
-      viewBox="0 0 160 110"
+      viewBox="0 0 180 110"
       width={width}
       height={height}
       className={className}
@@ -38,17 +33,17 @@ const SperoteckLogo = ({ className = "", size = 400 }: { className?: string; siz
           <stop offset="100%" stopColor="hsl(82, 70%, 28%)" />
         </linearGradient>
         <filter id="logoGlow">
-          <feGaussianBlur stdDeviation="4" result="blur" />
+          <feGaussianBlur stdDeviation="5" result="blur" />
           <feMerge>
             <feMergeNode in="blur" />
             <feMergeNode in="SourceGraphic" />
           </feMerge>
         </filter>
         <clipPath id="topClip">
-          <rect x="0" y="0" width="160" height="55" />
+          <rect x="0" y="0" width="180" height="55" />
         </clipPath>
         <clipPath id="bottomClip">
-          <rect x="0" y="55" width="160" height="55" />
+          <rect x="0" y="55" width="180" height="55" />
         </clipPath>
       </defs>
 
