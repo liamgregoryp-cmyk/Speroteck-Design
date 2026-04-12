@@ -207,8 +207,8 @@
   }
 
   @keyframes ring-reverse {
-    from { transform: scale(2.3) rotate(0deg); }
-    to { transform: scale(2.3) rotate(-360deg); }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(-360deg); }
   }
 
   /* Orbiting particles */
