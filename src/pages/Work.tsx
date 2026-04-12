@@ -7,6 +7,22 @@ import project4 from "@/assets/project-4.jpg";
 
 const Work = () => {
   const [activeCategory, setActiveCategory] = useState("ALL");
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [displayedCategory, setDisplayedCategory] = useState("ALL");
+
+  const handleCategoryChange = (category: string) => {
+    if (category === activeCategory) return;
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setActiveCategory(category);
+      setDisplayedCategory(category);
+      // Allow a frame for DOM update before fading in
+      requestAnimationFrame(() => {
+        setIsTransitioning(false);
+      });
+    }, 300);
+  };
+
   const projects = [
     {
       image: project4,
