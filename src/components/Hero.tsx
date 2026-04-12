@@ -110,18 +110,6 @@ const Hero = () => {
             <div className="absolute inset-0 border border-primary/10 rounded-full scale-[1.6] animate-ring-pulse" />
             <div className="absolute inset-0 border border-primary/5 rounded-full scale-[2.0] animate-ring-pulse-slow" />
             <div className="absolute inset-0 border border-dashed border-primary/[0.07] rounded-full scale-[2.3] animate-ring-reverse" />
-            {/* Corner accent dots on the outer ring */}
-            {[0, 90, 180, 270].map((deg) => (
-              <div
-                key={deg}
-                className="absolute w-2 h-2 bg-primary rounded-full animate-pulse-glow"
-                style={{
-                  top: '50%',
-                  left: '50%',
-                  transform: `rotate(${deg}deg) translateY(-${364 * 0.8}px) translate(-50%, -50%)`,
-                }}
-              />
-            ))}
           </div>
         </div>
 
