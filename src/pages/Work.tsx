@@ -222,12 +222,12 @@ const Work = () => {
             <p className="text-xl text-muted-foreground mb-12">
               Let's discuss how we can bring your eCommerce vision to life
             </p>
-            <a 
-              href="/contact" 
+            <Link 
+              to="/contact" 
               className="inline-block px-10 py-4 bg-primary text-primary-foreground font-medium tracking-wide uppercase text-sm hover:opacity-90 transition-opacity duration-300"
             >
               GET IN TOUCH
-            </a>
+            </Link>
           </div>
         </div>
       </section>

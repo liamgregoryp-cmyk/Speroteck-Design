@@ -170,23 +170,23 @@ const Hero = () => {
               transition: 'opacity 0.4s ease-out 0.2s, transform 0.4s ease-out 0.2s',
             }}
           >
-            <a
-              href="/contact"
+            <Link
+              to="/contact"
               className="group relative inline-flex items-center px-10 py-4 bg-primary text-primary-foreground font-semibold tracking-wide uppercase text-sm overflow-hidden transition-all duration-300 hover:shadow-[0_0_40px_hsl(82,75%,42%,0.5)] hover:scale-105"
             >
               <span className="relative z-10">Get in Touch</span>
               <div className="absolute inset-0 bg-gradient-to-r from-[hsl(82,75%,50%)] to-[hsl(82,75%,35%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-            </a>
-            <a
-              href="/work"
+            </Link>
+            <Link
+              to="/work"
               className="group inline-flex items-center px-10 py-4 border border-primary/30 text-foreground font-medium tracking-wide uppercase text-sm hover:border-primary hover:text-primary transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_hsl(82,75%,42%,0.15)]"
             >
               View Our Work
               <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
