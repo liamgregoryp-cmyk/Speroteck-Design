@@ -9,6 +9,16 @@ const Work = () => {
   const [activeCategory, setActiveCategory] = useState("ALL");
   const projects = [
     {
+      image: project4,
+      title: "DIOR",
+      location: "eCOMMERCE IMPLEMENTATION",
+      category: "IMPLEMENTATION",
+      description: "Enterprise-level Salesforce Commerce Cloud implementation for the iconic luxury fashion house, delivering a premium digital shopping experience that reflects the brand's heritage of elegance and craftsmanship.",
+      platform: "SALESFORCE",
+      year: "ONGOING",
+      url: "https://www.dior.com"
+    },
+    {
       image: project1,
       title: "CANDYFAVORITES.COM",
       location: "eCOMMERCE IMPLEMENTATION",
@@ -67,16 +77,6 @@ const Work = () => {
       platform: "SALESFORCE",
       year: "COMPLETED",
       url: "https://us.pandora.net"
-    },
-    {
-      image: project4,
-      title: "DIOR",
-      location: "eCOMMERCE IMPLEMENTATION",
-      category: "IMPLEMENTATION",
-      description: "Enterprise-level Salesforce Commerce Cloud implementation for the iconic luxury fashion house, delivering a premium digital shopping experience that reflects the brand's heritage of elegance and craftsmanship.",
-      platform: "SALESFORCE",
-      year: "ONGOING",
-      url: "https://www.dior.com"
     }
   ];
 
