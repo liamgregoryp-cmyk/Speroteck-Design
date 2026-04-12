@@ -191,15 +191,61 @@
     50% { opacity: 0.3; transform: scale(1.7); }
   }
 
-  /* Scroll line */
-  .animate-scroll-line {
-    animation: scroll-line 2s ease-in-out infinite;
+  /* Ring pulse slow */
+  .animate-ring-pulse-slow {
+    animation: ring-pulse-slow 5s ease-in-out infinite;
   }
-  
-  @keyframes scroll-line {
-    0% { opacity: 0; transform: scaleY(0); transform-origin: top; }
-    50% { opacity: 1; transform: scaleY(1); transform-origin: top; }
-    100% { opacity: 0; transform: scaleY(1); transform-origin: bottom; }
+
+  @keyframes ring-pulse-slow {
+    0%, 100% { opacity: 0.05; transform: scale(2.0); }
+    50% { opacity: 0.15; transform: scale(2.1); }
+  }
+
+  /* Ring reverse spin */
+  .animate-ring-reverse {
+    animation: ring-reverse 25s linear infinite;
+  }
+
+  @keyframes ring-reverse {
+    from { transform: scale(2.3) rotate(0deg); }
+    to { transform: scale(2.3) rotate(-360deg); }
+  }
+
+  /* Orbiting particles */
+  @keyframes orbit-particle {
+    0% {
+      transform: rotate(0deg) translateX(var(--orbit-radius, 200px));
+    }
+    100% {
+      transform: rotate(360deg) translateX(var(--orbit-radius, 200px));
+    }
+  }
+
+  /* Floating code symbols */
+  @keyframes float-symbol {
+    0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.06; }
+    25% { transform: translateY(-20px) rotate(5deg); opacity: 0.12; }
+    75% { transform: translateY(10px) rotate(-3deg); opacity: 0.04; }
+  }
+
+  /* Gradient flow for text */
+  .animate-gradient-flow {
+    animation: gradient-flow 4s ease-in-out infinite;
+  }
+
+  @keyframes gradient-flow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  /* Text shimmer */
+  .animate-text-shimmer {
+    animation: text-shimmer 3s ease-in-out infinite;
+  }
+
+  @keyframes text-shimmer {
+    0%, 100% { background-position: -200% 0; }
+    50% { background-position: 200% 0; }
   }
 
   /* Logo SVG path animations */
