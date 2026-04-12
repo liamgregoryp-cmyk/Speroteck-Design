@@ -16,7 +16,7 @@ const Navigation = () => {
         
         <div className="hidden md:flex items-center space-x-12">
           <a href="/work" className="text-minimal text-muted-foreground hover:text-primary transition-colors duration-300">
-            WORK
+            OUR WORK
           </a>
           <a href="/services" className="text-minimal text-muted-foreground hover:text-primary transition-colors duration-300">
             SERVICES
@@ -50,7 +50,7 @@ const Navigation = () => {
         <div className="md:hidden bg-background border-b border-border">
           <div className="container mx-auto px-6 py-6 space-y-4">
             <a href="/work" className="block text-minimal text-muted-foreground hover:text-primary transition-colors duration-300">
-              WORK
+              OUR WORK
             </a>
             <a href="/services" className="block text-minimal text-muted-foreground hover:text-primary transition-colors duration-300">
               SERVICES
