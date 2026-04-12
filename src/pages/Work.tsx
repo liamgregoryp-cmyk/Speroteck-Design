@@ -66,7 +66,7 @@ const Work = () => {
       url: "https://www.spotix.com"
     },
     {
-      image: project1,
+      image: projectSoundoftristate,
       title: "SOUNDOFTRISTATE.COM",
       location: "STORE OVERHAUL",
       category: "MIGRATION",
