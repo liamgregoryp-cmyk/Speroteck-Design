@@ -2,14 +2,15 @@ import { useEffect, useState, useRef } from "react";
 import SperoteckLogo from "./SperoteckLogo";
 
 const Hero = () => {
-  const [phase, setPhase] = useState<'fullscreen' | 'shrinking' | 'settled' | 'text'>('fullscreen');
+  const [phase, setPhase] = useState<'fullscreen' | 'shrinking' | 'settled'>('fullscreen');
+  const [showText, setShowText] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const t1 = setTimeout(() => setPhase('shrinking'), 1200);
     const t2 = setTimeout(() => setPhase('settled'), 4200);
-    const t3 = setTimeout(() => setPhase('text'), 3200);
+    const t3 = setTimeout(() => setShowText(true), 3200);
     return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
   }, []);
 
