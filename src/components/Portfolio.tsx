@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Star } from "lucide-react";
 import project1 from "@/assets/project-1.jpg";
 import project2 from "@/assets/project-2.jpg";
 import project3 from "@/assets/project-3.jpg";
@@ -61,25 +62,29 @@ const Portfolio = () => {
       quote: "CandyFavorites.com, the Internet's First Candy Store, backed by McKeesport Candy Co., the Oldest Wholesale Candy Company in the nation, has utilized Speroteck for several years. Their dedication and expertise have been instrumental in our online success.",
       name: "Jon H. Prince",
       title: "President",
-      company: "CandyFavorites.com"
+      company: "CandyFavorites.com",
+      rating: 5
     },
     {
       quote: "I am writing to express my sincere gratitude for the excellent service Speroteck has provided to our company. Your team of server administrators has been exceptional in maintaining our infrastructure and ensuring seamless operations.",
       name: "John Maguire",
       title: "President | CEO",
-      company: "CruiseDirect.com"
+      company: "CruiseDirect.com",
+      rating: 5
     },
     {
       quote: "We had an open source Magento store and it needed major overhauls, as well as updates for security and more. We had a bad experience with another company before finding Speroteck, and they turned everything around for us.",
       name: "Joy Woodruff",
       title: "eCommerce Director",
-      company: "SoundOfTristate.com"
+      company: "SoundOfTristate.com",
+      rating: 5
     },
     {
       quote: "Before partnering with Speroteck, we faced a two-fold challenge. First, we needed a reliable team to maintain our webserver. Second, our in-house developer was swamped and needed backup. Enter Speroteck – a company with a culture that genuinely cares about our success.",
       name: "Tom Altman",
       title: "Director of Technology",
-      company: "Spotix.com"
+      company: "Spotix.com",
+      rating: 5
     }
   ];
 
@@ -163,6 +168,11 @@ const Portfolio = () => {
                   }`}
                   style={{ transitionDelay: `${index * 150}ms` }}
                 >
+                  <div className="flex items-center gap-1 mb-4">
+                    {Array.from({ length: testimonial.rating }).map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-primary text-primary" />
+                    ))}
+                  </div>
                   <div className="text-primary text-4xl mb-4 opacity-30">"</div>
                   <p className="text-muted-foreground leading-relaxed mb-6 italic">
                     {testimonial.quote}
