@@ -44,7 +44,6 @@ const Contact = () => {
                     <h4 className="text-minimal text-primary mb-2">{item.label}</h4>
                     <a
                       href={item.href}
-                      {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                       className="text-xl hover:text-primary transition-colors duration-300 inline-flex items-center gap-2"
                     >
                       {item.value}
