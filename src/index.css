@@ -5,6 +5,15 @@
 /* Speroteck Design System - Dark & Green */
 
 @layer base {
+  * {
+    cursor: default;
+  }
+  a, button, [role="button"], input, textarea, select, label[for] {
+    cursor: pointer;
+  }
+  input[type="text"], input[type="email"], input[type="password"], input[type="search"], input[type="url"], input[type="tel"], input[type="number"], textarea {
+    cursor: text;
+  }
   :root {
     /* Light mode - still dark-leaning for Speroteck brand */
     --background: 0 0% 100%;
