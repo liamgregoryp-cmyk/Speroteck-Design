@@ -29,19 +29,22 @@ const Portfolio = () => {
       image: project1,
       title: "CANDYFAVORITES.COM",
       location: "eCOMMERCE PLATFORM",
-      description: "Full-scale Magento implementation for the Internet's first candy store, backed by the oldest wholesale candy company in the nation."
+      description: "Full-scale Magento implementation for the Internet's first candy store, backed by the oldest wholesale candy company in the nation.",
+      url: "https://www.candyfavorites.com"
     },
     {
       image: project2,
       title: "CRUISEDIRECT.COM",
       location: "PLATFORM MIGRATION",
-      description: "Comprehensive server administration and platform optimization for one of the leading online cruise booking platforms."
+      description: "Comprehensive server administration and platform optimization for one of the leading online cruise booking platforms.",
+      url: "https://www.cruisedirect.com"
     },
     {
       image: project3,
       title: "SPOTIX.COM",
       location: "MANAGED SERVICES",
-      description: "Reliable web server maintenance and development support, freeing the in-house team to focus on strategic growth initiatives."
+      description: "Reliable web server maintenance and development support, freeing the in-house team to focus on strategic growth initiatives.",
+      url: "https://www.spotix.com"
     }
   ];
 
@@ -89,9 +92,9 @@ const Portfolio = () => {
 
                 <div className="mt-8 grid md:grid-cols-3 gap-8">
                   <div>
-                    <h4 className="text-2xl font-light text-architectural mb-2 group-hover:text-primary transition-colors duration-500">
+                    <a href={project.url} target="_blank" rel="noopener noreferrer" className="text-2xl font-light text-architectural mb-2 group-hover:text-primary transition-colors duration-500 hover:underline inline-block">
                       {project.title}
-                    </h4>
+                    </a>
                     <p className="text-minimal text-primary flex items-center gap-2">
                       <span className="w-4 h-px bg-primary" />
                       {project.location}
