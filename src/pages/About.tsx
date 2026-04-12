@@ -56,7 +56,7 @@ const About = () => {
                     </div>
                     <div>
                       <h3 className="text-minimal text-primary mb-2">CLIENTS</h3>
-                      <p className="text-xl">100+</p>
+                      <p className="text-xl">500+</p>
                     </div>
                   </div>
                 </div>
