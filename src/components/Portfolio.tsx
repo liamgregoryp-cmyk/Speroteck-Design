@@ -46,6 +46,13 @@ const Portfolio = () => {
       location: "MANAGED SERVICES",
       description: "Reliable web server maintenance and development support, freeing the in-house team to focus on strategic growth initiatives.",
       url: "https://www.spotix.com"
+    },
+    {
+      image: project4,
+      title: "DIOR",
+      location: "eCOMMERCE IMPLEMENTATION",
+      description: "Enterprise-level Salesforce Commerce Cloud implementation for the iconic luxury fashion house, delivering a premium digital shopping experience.",
+      url: "https://www.dior.com"
     }
   ];
 
