@@ -39,13 +39,11 @@ const Contact = () => {
                 {[
                   { label: "EMAIL", value: "info@speroteck.com", href: "mailto:info@speroteck.com" },
                   { label: "PHONE", value: "1 (847) 508-9229", href: "tel:18475089229" },
-                  { label: "WEBSITE", value: "www.speroteck.com", href: "https://www.speroteck.com", external: true },
                 ].map((item, i) => (
                   <div key={i} className="group">
                     <h4 className="text-minimal text-primary mb-2">{item.label}</h4>
                     <a
                       href={item.href}
-                      {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                       className="text-xl hover:text-primary transition-colors duration-300 inline-flex items-center gap-2"
                     >
                       {item.value}
