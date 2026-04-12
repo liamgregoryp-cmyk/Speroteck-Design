@@ -99,17 +99,19 @@ const Hero = () => {
         {/* Animated Logo with parallax */}
         <div className={`transition-all duration-[1.5s] ease-out ${loaded ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`}>
           <div
-            className="relative"
+            className="relative flex items-center justify-center"
             style={{
+              width: 364,
+              height: 364,
               transform: `translate(${mousePos.x * 15}px, ${mousePos.y * 15}px)`,
               transition: 'transform 0.2s ease-out',
             }}
           >
             <SperoteckLogo size={364} className="animate-logo-spin drop-shadow-[0_0_80px_hsl(82,75%,42%,0.4)]" />
-            {/* Multiple rings */}
-            <div className="absolute inset-0 border border-primary/10 rounded-full scale-[1.6] animate-ring-pulse" />
-            <div className="absolute inset-0 border border-primary/5 rounded-full scale-[2.0] animate-ring-pulse-slow" />
-            <div className="absolute inset-0 border border-dashed border-primary/[0.07] rounded-full scale-[2.3] animate-ring-reverse" />
+            {/* Multiple rings - centered on the logo */}
+            <div className="absolute inset-0 m-auto border border-primary/10 rounded-full animate-ring-pulse" style={{ width: 364 * 1.6, height: 364 * 1.6 }} />
+            <div className="absolute inset-0 m-auto border border-primary/5 rounded-full animate-ring-pulse-slow" style={{ width: 364 * 2.0, height: 364 * 2.0 }} />
+            <div className="absolute inset-0 m-auto border border-dashed border-primary/[0.07] rounded-full animate-ring-reverse" style={{ width: 364 * 2.3, height: 364 * 2.3 }} />
           </div>
         </div>
 

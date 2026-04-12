@@ -187,8 +187,8 @@
   }
   
   @keyframes ring-pulse {
-    0%, 100% { opacity: 0.1; transform: scale(1.6); }
-    50% { opacity: 0.3; transform: scale(1.7); }
+    0%, 100% { opacity: 0.1; transform: scale(1); }
+    50% { opacity: 0.3; transform: scale(1.05); }
   }
 
   /* Ring pulse slow */
@@ -197,8 +197,8 @@
   }
 
   @keyframes ring-pulse-slow {
-    0%, 100% { opacity: 0.05; transform: scale(2.0); }
-    50% { opacity: 0.15; transform: scale(2.1); }
+    0%, 100% { opacity: 0.05; transform: scale(1); }
+    50% { opacity: 0.15; transform: scale(1.05); }
   }
 
   /* Ring reverse spin */
@@ -207,8 +207,8 @@
   }
 
   @keyframes ring-reverse {
-    from { transform: scale(2.3) rotate(0deg); }
-    to { transform: scale(2.3) rotate(-360deg); }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(-360deg); }
   }
 
   /* Orbiting particles */
