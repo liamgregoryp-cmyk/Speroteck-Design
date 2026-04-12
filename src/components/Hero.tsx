@@ -38,7 +38,7 @@ const Hero = () => {
         />
       ))}
 
-      <div className="relative z-10 flex flex-col items-center">
+      <div className="relative z-10 flex flex-col items-center mt-16">
         {/* Animated Logo */}
         <div className={`transition-all duration-[1.5s] ease-out ${loaded ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}`}>
           <div className="relative">
