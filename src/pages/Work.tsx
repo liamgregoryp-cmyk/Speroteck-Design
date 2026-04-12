@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Navigation from "@/components/Navigation";
 import project1 from "@/assets/project-1.jpg";
 import project2 from "@/assets/project-2.jpg";
