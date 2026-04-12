@@ -35,7 +35,7 @@ const About = () => {
                   <div className="space-y-6">
                     <div className="border-l-2 border-primary pl-6">
                       <h4 className="text-lg font-medium mb-2">Platform Specialists</h4>
-                      <p className="text-muted-foreground">Certified in Magento, Shopify, BigCommerce & Salesforce Commerce Cloud</p>
+                      <p className="text-muted-foreground">Certified in Salesforce Commerce Cloud, Shopify, BigCommerce, Magento & Shopware</p>
                     </div>
                     <div className="border-l-2 border-primary pl-6">
                       <h4 className="text-lg font-medium mb-2">Full Lifecycle</h4>

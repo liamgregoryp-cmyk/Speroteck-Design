@@ -30,7 +30,7 @@ const About = () => {
   }, []);
 
   const expertise = [
-    { title: "Platform Specialists", desc: "Certified experts in Magento, Shopify, BigCommerce & Salesforce Commerce Cloud" },
+    { title: "Platform Specialists", desc: "Certified experts in Salesforce Commerce Cloud, Shopify, BigCommerce, Magento & Shopware" },
     { title: "Full Lifecycle", desc: "From architecture and development to design, optimization, and ongoing support" },
     { title: "Client Partnership", desc: "Long-term relationships built on trust, transparency, and measurable results" },
   ];
