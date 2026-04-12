@@ -26,9 +26,8 @@ const Hero = () => {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  const isShrinking = phase === 'shrinking' || phase === 'settled' || phase === 'text';
-  const isSettled = phase === 'settled' || phase === 'text';
-  const showText = phase === 'text';
+  const isShrinking = phase === 'shrinking' || phase === 'settled';
+  const isSettled = phase === 'settled';
 
   return (
     <section ref={sectionRef} className="relative h-screen flex items-center justify-center overflow-hidden bg-background">
