@@ -7,6 +7,7 @@ import project4 from "@/assets/project-4.jpg";
 
 const Portfolio = () => {
   const [visibleItems, setVisibleItems] = useState<number[]>([]);
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
