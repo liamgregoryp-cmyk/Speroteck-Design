@@ -14,7 +14,8 @@ const Work = () => {
       category: "IMPLEMENTATION",
       description: "Full-scale Magento implementation for the Internet's first candy store. Backed by McKeesport Candy Co., the oldest wholesale candy company in the nation.",
       platform: "MAGENTO",
-      year: "ONGOING"
+      year: "ONGOING",
+      url: "https://www.candyfavorites.com"
     },
     {
       image: project2,
@@ -23,7 +24,8 @@ const Work = () => {
       category: "MANAGED SERVICES",
       description: "Comprehensive server administration and platform optimization for one of the leading online cruise booking platforms.",
       platform: "CUSTOM",
-      year: "ONGOING"
+      year: "ONGOING",
+      url: "https://www.cruisedirect.com"
     },
     {
       image: project3,
@@ -32,7 +34,8 @@ const Work = () => {
       category: "MANAGED SERVICES",
       description: "Reliable web server maintenance and full development support, freeing the in-house team to focus on strategic growth.",
       platform: "MAGENTO",
-      year: "ONGOING"
+      year: "ONGOING",
+      url: "https://www.spotix.com"
     },
     {
       image: project1,
@@ -41,7 +44,8 @@ const Work = () => {
       category: "MIGRATION",
       description: "Major overhauls including security updates and platform modernization for an open source Magento store.",
       platform: "MAGENTO",
-      year: "COMPLETED"
+      year: "COMPLETED",
+      url: "https://www.soundoftristate.com"
     },
     {
       image: project2,
@@ -50,7 +54,8 @@ const Work = () => {
       category: "IMPLEMENTATION",
       description: "Complete eCommerce solution for office furniture retailer, optimizing the shopping experience and boosting conversions.",
       platform: "SHOPIFY",
-      year: "COMPLETED"
+      year: "COMPLETED",
+      url: "https://www.officedesigns.com"
     },
     {
       image: project3,
@@ -59,7 +64,8 @@ const Work = () => {
       category: "IMPLEMENTATION",
       description: "Enterprise-grade eCommerce solution for the global jewelry brand's US operations.",
       platform: "SALESFORCE",
-      year: "COMPLETED"
+      year: "COMPLETED",
+      url: "https://us.pandora.net"
     }
   ];
 
@@ -140,9 +146,9 @@ const Work = () => {
                   
                   <div className="space-y-6">
                     <div>
-                      <h3 className="text-2xl lg:text-3xl font-light text-architectural mb-2 group-hover:text-primary transition-colors duration-500">
+                      <a href={project.url} target="_blank" rel="noopener noreferrer" className="text-2xl lg:text-3xl font-light text-architectural mb-2 group-hover:text-primary transition-colors duration-500 hover:underline inline-block">
                         {project.title}
-                      </h3>
+                      </a>
                       <p className="text-minimal text-muted-foreground">
                         {project.location}
                       </p>
