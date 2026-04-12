@@ -8,6 +8,8 @@ import project4 from "@/assets/project-4.jpg";
 const Portfolio = () => {
   const [visibleItems, setVisibleItems] = useState<number[]>([]);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const [activeProject, setActiveProject] = useState(0);
+  const [isProjectTransitioning, setIsProjectTransitioning] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -106,47 +108,85 @@ const Portfolio = () => {
             </h3>
           </div>
 
-          <div className="space-y-24">
-            {projects.map((project, index) => (
-              <div
-                key={index}
-                data-index={index}
-                className={`group transition-all duration-1000 ${
-                  visibleItems.includes(index) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"
-                }`}
-                style={{ transitionDelay: `${index * 200}ms` }}
-              >
-                <div className="relative overflow-hidden rounded-lg">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    loading="lazy"
-                    className="w-full h-[60vh] object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="absolute top-6 right-6 w-12 h-12 border border-primary/30 rounded-full flex items-center justify-center text-primary text-sm font-bold opacity-0 group-hover:opacity-100 transition-all duration-500 backdrop-blur-sm bg-background/20">
-                    {String(index + 1).padStart(2, '0')}
-                  </div>
+          <div className={`transition-opacity duration-500 ${isProjectTransitioning ? 'opacity-0' : 'opacity-100'}`}>
+            <div className="group">
+              <div className="relative overflow-hidden rounded-lg">
+                <img
+                  src={projects[activeProject].image}
+                  alt={projects[activeProject].title}
+                  loading="lazy"
+                  className="w-full h-[60vh] object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute top-6 right-6 w-12 h-12 border border-primary/30 rounded-full flex items-center justify-center text-primary text-sm font-bold backdrop-blur-sm bg-background/20">
+                  {String(activeProject + 1).padStart(2, '0')}
                 </div>
+                {/* Navigation arrows on image */}
+                <button
+                  onClick={() => {
+                    setIsProjectTransitioning(true);
+                    setTimeout(() => {
+                      setActiveProject((prev) => (prev - 1 + projects.length) % projects.length);
+                      setIsProjectTransitioning(false);
+                    }, 300);
+                  }}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-border/50 flex items-center justify-center text-foreground/70 hover:text-primary hover:border-primary bg-background/30 backdrop-blur-sm transition-all duration-300"
+                  aria-label="Previous project"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+                <button
+                  onClick={() => {
+                    setIsProjectTransitioning(true);
+                    setTimeout(() => {
+                      setActiveProject((prev) => (prev + 1) % projects.length);
+                      setIsProjectTransitioning(false);
+                    }, 300);
+                  }}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-border/50 flex items-center justify-center text-foreground/70 hover:text-primary hover:border-primary bg-background/30 backdrop-blur-sm transition-all duration-300"
+                  aria-label="Next project"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+              </div>
 
-                <div className="mt-8 grid md:grid-cols-3 gap-8">
-                  <div>
-                    <a href={project.url} target="_blank" rel="noopener noreferrer" className="text-2xl font-light text-architectural mb-2 group-hover:text-primary transition-colors duration-500 hover:underline inline-block">
-                      {project.title}
-                    </a>
-                    <p className="text-minimal text-primary flex items-center gap-2">
-                      <span className="w-4 h-px bg-primary" />
-                      {project.location}
-                    </p>
-                  </div>
-                  <div className="md:col-span-2">
-                    <p className="text-muted-foreground leading-relaxed">
-                      {project.description}
-                    </p>
-                  </div>
+              <div className="mt-8 grid md:grid-cols-3 gap-8">
+                <div>
+                  <a href={projects[activeProject].url} target="_blank" rel="noopener noreferrer" className="text-2xl font-light text-architectural mb-2 group-hover:text-primary transition-colors duration-500 hover:underline inline-block">
+                    {projects[activeProject].title}
+                  </a>
+                  <p className="text-minimal text-primary flex items-center gap-2">
+                    <span className="w-4 h-px bg-primary" />
+                    {projects[activeProject].location}
+                  </p>
+                </div>
+                <div className="md:col-span-2">
+                  <p className="text-muted-foreground leading-relaxed">
+                    {projects[activeProject].description}
+                  </p>
                 </div>
               </div>
-            ))}
+
+              {/* Dot indicators */}
+              <div className="flex items-center gap-2 mt-8">
+                {projects.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setIsProjectTransitioning(true);
+                      setTimeout(() => {
+                        setActiveProject(index);
+                        setIsProjectTransitioning(false);
+                      }, 300);
+                    }}
+                    className={`h-1 rounded-full transition-all duration-300 ${
+                      index === activeProject ? "w-6 bg-primary" : "w-2 bg-border hover:bg-muted-foreground"
+                    }`}
+                    aria-label={`Go to project ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Client Testimonials */}
