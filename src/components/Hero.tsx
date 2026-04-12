@@ -9,7 +9,7 @@ const Hero = () => {
   useEffect(() => {
     const t1 = setTimeout(() => setPhase('shrinking'), 1200);
     const t2 = setTimeout(() => setPhase('settled'), 4200);
-    const t3 = setTimeout(() => setPhase('text'), 4500);
+    const t3 = setTimeout(() => setPhase('text'), 4300);
     return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
   }, []);
 
