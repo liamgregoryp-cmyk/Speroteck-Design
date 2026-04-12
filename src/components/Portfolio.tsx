@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import project1 from "@/assets/project-1.jpg";
 import project2 from "@/assets/project-2.jpg";
 import project3 from "@/assets/project-3.jpg";
+import project4 from "@/assets/project-4.jpg";
 
 const Portfolio = () => {
   const [visibleItems, setVisibleItems] = useState<number[]>([]);
@@ -45,6 +46,13 @@ const Portfolio = () => {
       location: "MANAGED SERVICES",
       description: "Reliable web server maintenance and development support, freeing the in-house team to focus on strategic growth initiatives.",
       url: "https://www.spotix.com"
+    },
+    {
+      image: project4,
+      title: "DIOR",
+      location: "eCOMMERCE IMPLEMENTATION",
+      description: "Enterprise-level Salesforce Commerce Cloud implementation for the iconic luxury fashion house, delivering a premium digital shopping experience.",
+      url: "https://www.dior.com"
     }
   ];
 

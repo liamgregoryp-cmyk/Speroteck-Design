@@ -3,6 +3,7 @@ import Navigation from "@/components/Navigation";
 import project1 from "@/assets/project-1.jpg";
 import project2 from "@/assets/project-2.jpg";
 import project3 from "@/assets/project-3.jpg";
+import project4 from "@/assets/project-4.jpg";
 
 const Work = () => {
   const [activeCategory, setActiveCategory] = useState("ALL");
@@ -66,6 +67,16 @@ const Work = () => {
       platform: "SALESFORCE",
       year: "COMPLETED",
       url: "https://us.pandora.net"
+    },
+    {
+      image: project4,
+      title: "DIOR",
+      location: "eCOMMERCE IMPLEMENTATION",
+      category: "IMPLEMENTATION",
+      description: "Enterprise-level Salesforce Commerce Cloud implementation for the iconic luxury fashion house, delivering a premium digital shopping experience that reflects the brand's heritage of elegance and craftsmanship.",
+      platform: "SALESFORCE",
+      year: "ONGOING",
+      url: "https://www.dior.com"
     }
   ];
 
