@@ -17,7 +17,7 @@ const About = () => {
             frame++;
             setCounters({
               years: Math.round((frame / totalFrames) * 20),
-              clients: Math.round((frame / totalFrames) * 100),
+              clients: Math.round((frame / totalFrames) * 500),
             });
             if (frame >= totalFrames) clearInterval(interval);
           }, 30);
