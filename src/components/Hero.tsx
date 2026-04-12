@@ -94,8 +94,8 @@ const Hero = () => {
               : 'scale(2.8)',
             opacity: phase === 'fullscreen' ? 0 : 1,
             transition: isShrinking
-              ? 'transform 1.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease-out'
-              : 'opacity 0.6s ease-out',
+              ? 'transform 3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease-out'
+              : 'opacity 0.8s ease-out',
           }}
         >
           <SperoteckLogo
@@ -136,7 +136,7 @@ const Hero = () => {
             style={{
               opacity: showText ? 1 : 0,
               transform: showText ? 'translateY(0)' : 'translateY(30px)',
-              transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
+              transition: 'opacity 0.4s ease-out, transform 0.4s ease-out',
             }}
           >
             <span className="inline-block animate-text-shimmer bg-[length:200%_100%] bg-clip-text">
@@ -152,7 +152,7 @@ const Hero = () => {
             style={{
               opacity: showText ? 1 : 0,
               transform: showText ? 'translateY(0)' : 'translateY(30px)',
-              transition: 'opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s',
+              transition: 'opacity 0.4s ease-out 0.1s, transform 0.4s ease-out 0.1s',
             }}
           >
             We breathe eCommerce for over 20 years. It's not just our specialty — it's our passion.
@@ -162,7 +162,7 @@ const Hero = () => {
             style={{
               opacity: showText ? 1 : 0,
               transform: showText ? 'translateY(0)' : 'translateY(30px)',
-              transition: 'opacity 0.8s ease-out 0.4s, transform 0.8s ease-out 0.4s',
+              transition: 'opacity 0.4s ease-out 0.2s, transform 0.4s ease-out 0.2s',
             }}
           >
             <a
