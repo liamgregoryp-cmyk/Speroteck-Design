@@ -8,7 +8,7 @@ const SperoteckLogo = ({ className = "", size = 400 }: { className?: string; siz
       width={size}
       height={size}
       className={className}
-      style={{ objectFit: "contain" }}
+      style={{ objectFit: "contain", transform: "scaleX(1.05)" }}
     />
   );
 };
