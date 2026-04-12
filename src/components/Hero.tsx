@@ -87,18 +87,25 @@ const Hero = () => {
             width: 364,
             height: 364,
             transform: isShrinking
-              ? `translate(${mousePos.x * 15}px, ${mousePos.y * 15}px) scale(1) rotate(0deg)`
-              : 'scale(2.8) rotate(360deg)',
+              ? `translate(${mousePos.x * 15}px, ${mousePos.y * 15}px) scale(1)`
+              : 'scale(2.8)',
             opacity: phase === 'fullscreen' ? 0 : 1,
             transition: isShrinking
               ? 'transform 3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease-out'
               : 'opacity 0.8s ease-out',
           }}
         >
-          <SperoteckLogo
-            size={364}
-            className={`drop-shadow-[0_0_80px_hsl(82,75%,42%,0.4)] ${!isShrinking ? 'drop-shadow-[0_0_120px_hsl(82,75%,42%,0.8)]' : ''}`}
-          />
+          <div
+            style={{
+              transform: isShrinking ? 'rotate(0deg)' : 'rotate(720deg)',
+              transition: isShrinking ? 'transform 3s cubic-bezier(0.16, 1, 0.3, 1)' : 'none',
+            }}
+          >
+            <SperoteckLogo
+              size={364}
+              className={`drop-shadow-[0_0_80px_hsl(82,75%,42%,0.4)] ${!isShrinking ? 'drop-shadow-[0_0_120px_hsl(82,75%,42%,0.8)]' : ''}`}
+            />
+          </div>
           {/* Rings appear after settled */}
           <div
             className="absolute inset-0 m-auto border border-primary/10 rounded-full animate-ring-pulse"
