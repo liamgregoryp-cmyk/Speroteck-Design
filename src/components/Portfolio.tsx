@@ -168,6 +168,11 @@ const Portfolio = () => {
                   }`}
                   style={{ transitionDelay: `${index * 150}ms` }}
                 >
+                  <div className="flex items-center gap-1 mb-4">
+                    {Array.from({ length: testimonial.rating }).map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-primary text-primary" />
+                    ))}
+                  </div>
                   <div className="text-primary text-4xl mb-4 opacity-30">"</div>
                   <p className="text-muted-foreground leading-relaxed mb-6 italic">
                     {testimonial.quote}
