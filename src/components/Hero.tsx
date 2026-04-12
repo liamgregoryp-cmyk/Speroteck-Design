@@ -87,8 +87,8 @@ const Hero = () => {
             width: 364,
             height: 364,
             transform: isShrinking
-              ? `translate(${mousePos.x * 15}px, ${mousePos.y * 15}px) scale(1)`
-              : 'scale(2.8)',
+              ? `translate(${mousePos.x * 15}px, ${mousePos.y * 15}px) scale(1) rotate(0deg)`
+              : 'scale(2.8) rotate(360deg)',
             opacity: phase === 'fullscreen' ? 0 : 1,
             transition: isShrinking
               ? 'transform 3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease-out'
