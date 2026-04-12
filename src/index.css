@@ -197,8 +197,8 @@
   }
 
   @keyframes ring-pulse-slow {
-    0%, 100% { opacity: 0.05; transform: scale(2.0); }
-    50% { opacity: 0.15; transform: scale(2.1); }
+    0%, 100% { opacity: 0.05; transform: scale(1); }
+    50% { opacity: 0.15; transform: scale(1.05); }
   }
 
   /* Ring reverse spin */
