@@ -129,7 +129,7 @@ const Work = () => {
               {categories.map((category) => (
                 <button
                   key={category}
-                  onClick={() => setActiveCategory(category)}
+                  onClick={() => handleCategoryChange(category)}
                   className={`text-minimal transition-colors duration-300 relative group ${
                     activeCategory === category 
                       ? "text-primary" 
@@ -152,9 +152,15 @@ const Work = () => {
       <section className="pb-32">
         <div className="container mx-auto px-6">
           <div className="max-w-7xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-16 lg:gap-20">
+            <div className={`grid md:grid-cols-2 gap-16 lg:gap-20 transition-opacity duration-300 ease-in-out ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
               {filteredProjects.map((project, index) => (
-                <div key={index} className="group cursor-pointer">
+                <div
+                  key={project.title}
+                  className="group cursor-pointer"
+                  style={{
+                    animation: isTransitioning ? 'none' : `fade-in 0.5s ease-out ${index * 100}ms both`,
+                  }}
+                >
                   <div className="relative overflow-hidden mb-8">
                     <img 
                       src={project.image} 
