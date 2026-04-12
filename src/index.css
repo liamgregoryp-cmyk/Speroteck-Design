@@ -112,6 +112,15 @@
     @apply border-border;
   }
 
+  button,
+  [role="button"],
+  a,
+  [type="submit"],
+  [type="button"],
+  [type="reset"] {
+    cursor: pointer;
+  }
+
   body {
     @apply bg-background text-foreground font-sans antialiased;
   }
