@@ -159,38 +159,59 @@ const Portfolio = () => {
               Client <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[hsl(82,75%,55%)]">Reviews</span>
             </h3>
 
-            <div className="grid md:grid-cols-2 gap-8">
-              {testimonials.map((testimonial, index) => (
-                <div
-                  key={index}
-                  data-index={projects.length + index}
-                  className={`group p-8 border border-border rounded-lg bg-background/50 backdrop-blur-sm hover:border-primary/30 transition-all duration-500 ${
-                    visibleItems.includes(projects.length + index) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"
-                  }`}
-                  style={{ transitionDelay: `${index * 150}ms` }}
-                >
-                  <div className="flex items-center gap-1 mb-4">
-                    {Array.from({ length: testimonial.rating }).map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-primary text-primary" />
-                    ))}
-                  </div>
-                  <div className="text-primary text-4xl mb-4 opacity-30">"</div>
-                  <p className="text-muted-foreground leading-relaxed mb-6 italic">
-                    {testimonial.quote}
-                  </p>
+            <div className="relative max-w-2xl">
+              <div className="p-8 border border-border rounded-lg bg-background/50 backdrop-blur-sm transition-all duration-500">
+                <div className="flex items-center gap-1 mb-4">
+                  {Array.from({ length: testimonials[activeTestimonial].rating }).map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-primary text-primary" />
+                  ))}
+                </div>
+                <div className="text-primary text-4xl mb-4 opacity-30">"</div>
+                <p className="text-muted-foreground leading-relaxed mb-6 italic">
+                  {testimonials[activeTestimonial].quote}
+                </p>
+                <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm">
-                      {testimonial.name.charAt(0)}
+                      {testimonials[activeTestimonial].name.charAt(0)}
                     </div>
                     <div>
-                      <p className="text-foreground font-medium text-sm">{testimonial.name}</p>
+                      <p className="text-foreground font-medium text-sm">{testimonials[activeTestimonial].name}</p>
                       <p className="text-minimal text-muted-foreground">
-                        {testimonial.title}, {testimonial.company}
+                        {testimonials[activeTestimonial].title}, {testimonials[activeTestimonial].company}
                       </p>
                     </div>
                   </div>
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => setActiveTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
+                      className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-colors duration-300"
+                      aria-label="Previous review"
+                    >
+                      <ChevronLeft className="w-4 h-4" />
+                    </button>
+                    <button
+                      onClick={() => setActiveTestimonial((prev) => (prev + 1) % testimonials.length)}
+                      className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-colors duration-300"
+                      aria-label="Next review"
+                    >
+                      <ChevronRight className="w-4 h-4" />
+                    </button>
+                  </div>
                 </div>
-              ))}
+                <div className="flex items-center gap-2 mt-6">
+                  {testimonials.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setActiveTestimonial(index)}
+                      className={`h-1 rounded-full transition-all duration-300 ${
+                        index === activeTestimonial ? "w-6 bg-primary" : "w-2 bg-border hover:bg-muted-foreground"
+                      }`}
+                      aria-label={`Go to review ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
