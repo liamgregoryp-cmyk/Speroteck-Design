@@ -100,12 +100,7 @@ const Hero = () => {
         >
           <SperoteckLogo
             size={364}
-            className="drop-shadow-[0_0_80px_hsl(82,75%,42%,0.4)]"
-            style={{
-              filter: !isShrinking
-                ? 'drop-shadow(0 0 120px hsl(82,75%,42%,0.8))'
-                : undefined,
-            }}
+            className={`drop-shadow-[0_0_80px_hsl(82,75%,42%,0.4)] ${!isShrinking ? 'drop-shadow-[0_0_120px_hsl(82,75%,42%,0.8)]' : ''}`}
           />
           {/* Rings appear after settled */}
           <div
