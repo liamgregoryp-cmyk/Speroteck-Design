@@ -14,8 +14,6 @@ const Portfolio = () => {
   const [isProjectTransitioning, setIsProjectTransitioning] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
-  const totalTestimonialPages = Math.ceil(4 / 2); // testimonials.length / 2
-
   const navigateTestimonial = (direction: 'left' | 'right', target?: number) => {
     if (testimonialAnimating) return;
     setTestimonialDirection(direction);
@@ -24,12 +22,12 @@ const Portfolio = () => {
       if (target !== undefined) {
         setActiveTestimonial(target);
       } else if (direction === 'right') {
-        setActiveTestimonial((prev) => (prev + 1) % totalTestimonialPages);
+        setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
       } else {
-        setActiveTestimonial((prev) => (prev - 1 + totalTestimonialPages) % totalTestimonialPages);
+        setActiveTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
       }
       setTimeout(() => setTestimonialAnimating(false), 50);
-    }, 300);
+    }, 400);
   };
 
   useEffect(() => {
