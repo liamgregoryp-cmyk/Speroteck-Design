@@ -63,10 +63,11 @@ const Contact = () => {
                 </h4>
                 <div className="space-y-3">
                   {[
-                    "Magento / Adobe Commerce",
+                    "Salesforce Commerce Cloud",
                     "Shopify / Shopify Plus",
                     "BigCommerce",
-                    "Salesforce Commerce Cloud",
+                    "Magento / Adobe Commerce",
+                    "Shopware",
                   ].map((platform, i) => (
                     <div
                       key={i}
