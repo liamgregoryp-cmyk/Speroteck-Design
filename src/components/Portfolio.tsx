@@ -205,20 +205,26 @@ const Portfolio = () => {
             </h3>
 
             <div className="relative overflow-hidden">
-              <div 
-                className={`grid md:grid-cols-2 gap-6 transition-all duration-500 ease-out ${
-                  testimonialAnimating 
-                    ? testimonialDirection === 'right'
-                      ? 'opacity-0 translate-x-8'
-                      : 'opacity-0 -translate-x-8'
-                    : 'opacity-100 translate-x-0'
-                }`}
-              >
+              <div className="grid md:grid-cols-2 gap-6">
                 {[0, 1].map((offset) => {
-                  const index = (activeTestimonial * 2 + offset) % testimonials.length;
+                  const index = (activeTestimonial + offset) % testimonials.length;
                   const testimonial = testimonials[index];
+                  // When navigating right: left card (offset 0) exits first, right card (offset 1) follows
+                  // When navigating left: right card exits first, left card follows
+                  const isLeading = testimonialDirection === 'right' ? offset === 0 : offset === 1;
+                  const delay = isLeading ? '0ms' : '150ms';
                   return (
-                    <div key={`${activeTestimonial}-${offset}`} className="p-8 border border-border rounded-lg bg-background/50 backdrop-blur-sm hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
+                    <div 
+                      key={`${activeTestimonial}-${offset}`} 
+                      className={`p-8 border border-border rounded-lg bg-background/50 backdrop-blur-sm hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-400 ease-out ${
+                        testimonialAnimating
+                          ? isLeading
+                            ? testimonialDirection === 'right' ? 'opacity-0 -translate-x-12' : 'opacity-0 translate-x-12'
+                            : 'opacity-0 scale-95'
+                          : 'opacity-100 translate-x-0 scale-100'
+                      }`}
+                      style={{ transitionDelay: testimonialAnimating ? delay : '0ms' }}
+                    >
                       <div className="flex items-center gap-1 mb-4">
                         {Array.from({ length: testimonial.rating }).map((_, i) => (
                           <Star key={i} className="w-4 h-4 fill-primary text-primary" />
@@ -245,14 +251,14 @@ const Portfolio = () => {
               </div>
               <div className="flex items-center justify-between mt-8">
                 <div className="flex items-center gap-2">
-                  {Array.from({ length: totalTestimonialPages }).map((_, index) => (
+                  {testimonials.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => navigateTestimonial(index > activeTestimonial ? 'right' : 'left', index)}
                       className={`h-1 rounded-full transition-all duration-300 ${
                         index === activeTestimonial ? "w-6 bg-primary" : "w-2 bg-border hover:bg-muted-foreground"
                       }`}
-                      aria-label={`Go to reviews ${index * 2 + 1}-${index * 2 + 2}`}
+                      aria-label={`Go to review ${index + 1}`}
                     />
                   ))}
                 </div>
