@@ -16,7 +16,7 @@ const About = () => {
                 
                 <div className="space-y-8">
                   <p className="text-lg text-muted-foreground leading-relaxed">
-                    We breathe eCommerce for over 20 years now! It is not just our specialty — 
+                    We breathe eCommerce for over 25 years now! It is not just our specialty — 
                     it is our passion. We thrive to provide the latest and greatest in the most 
                     seamless way possible.
                   </p>
