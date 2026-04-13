@@ -75,8 +75,8 @@ const Services = () => {
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
                 <div className="flex items-start gap-6">
-                  <div className="flex-shrink-0">
-                    <span className="text-minimal text-primary font-bold">
+                  <div className="flex-shrink-0 w-14 h-14 rounded-full border border-primary/30 flex items-center justify-center group-hover:bg-primary/10 transition-colors duration-500">
+                    <span className="text-lg font-light text-primary">
                       {service.number}
                     </span>
                   </div>
