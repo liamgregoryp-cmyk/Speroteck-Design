@@ -33,7 +33,7 @@ const Contact = () => {
                   
                   <div>
                     <h3 className="text-minimal text-primary mb-2">WEBSITE</h3>
-                    <a href="/" className="text-xl hover:text-primary transition-colors duration-300">
+                    <a href="https://www.speroteck.com" target="_blank" rel="noopener noreferrer" className="text-xl hover:text-primary transition-colors duration-300">
                       www.speroteck.com
                     </a>
                   </div>
