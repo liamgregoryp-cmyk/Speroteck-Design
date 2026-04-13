@@ -16,7 +16,7 @@ const About = () => {
           const interval = setInterval(() => {
             frame++;
             setCounters({
-              years: Math.round((frame / totalFrames) * 20),
+              years: Math.round((frame / totalFrames) * 25),
               clients: Math.round((frame / totalFrames) * 500),
             });
             if (frame >= totalFrames) clearInterval(interval);
