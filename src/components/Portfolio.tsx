@@ -4,6 +4,7 @@ import project1 from "@/assets/project-1.jpg";
 import project2 from "@/assets/project-2.jpg";
 import project3 from "@/assets/project-3.jpg";
 import project4 from "@/assets/project-4.jpg";
+import projectDiorCologne from "@/assets/project-dior-cologne.jpg";
 
 const Portfolio = () => {
   const [visibleItems, setVisibleItems] = useState<number[]>([]);
@@ -49,11 +50,11 @@ const Portfolio = () => {
 
   const projects = [
     {
-      image: project4,
+      image: projectDiorCologne,
       title: "DIOR",
       location: "eCOMMERCE IMPLEMENTATION",
       description: "Enterprise-level Salesforce Commerce Cloud implementation for the iconic luxury fashion house, delivering a premium digital shopping experience.",
-      url: "https://www.dior.com"
+      url: "https://www.dior.com/en_us/beauty/fragrance"
     },
     {
       image: project1,
