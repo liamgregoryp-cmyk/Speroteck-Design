@@ -8,9 +8,29 @@ import project4 from "@/assets/project-4.jpg";
 const Portfolio = () => {
   const [visibleItems, setVisibleItems] = useState<number[]>([]);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const [testimonialAnimating, setTestimonialAnimating] = useState(false);
+  const [testimonialDirection, setTestimonialDirection] = useState<'left' | 'right'>('right');
   const [activeProject, setActiveProject] = useState(0);
   const [isProjectTransitioning, setIsProjectTransitioning] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+
+  const totalTestimonialPages = Math.ceil(4 / 2); // testimonials.length / 2
+
+  const navigateTestimonial = (direction: 'left' | 'right', target?: number) => {
+    if (testimonialAnimating) return;
+    setTestimonialDirection(direction);
+    setTestimonialAnimating(true);
+    setTimeout(() => {
+      if (target !== undefined) {
+        setActiveTestimonial(target);
+      } else if (direction === 'right') {
+        setActiveTestimonial((prev) => (prev + 1) % totalTestimonialPages);
+      } else {
+        setActiveTestimonial((prev) => (prev - 1 + totalTestimonialPages) % totalTestimonialPages);
+      }
+      setTimeout(() => setTestimonialAnimating(false), 50);
+    }, 300);
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -186,13 +206,21 @@ const Portfolio = () => {
               Client <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[hsl(82,75%,55%)]">Reviews</span>
             </h3>
 
-            <div className="relative">
-              <div className="grid md:grid-cols-2 gap-6">
+            <div className="relative overflow-hidden">
+              <div 
+                className={`grid md:grid-cols-2 gap-6 transition-all duration-500 ease-out ${
+                  testimonialAnimating 
+                    ? testimonialDirection === 'right'
+                      ? 'opacity-0 translate-x-8'
+                      : 'opacity-0 -translate-x-8'
+                    : 'opacity-100 translate-x-0'
+                }`}
+              >
                 {[0, 1].map((offset) => {
                   const index = (activeTestimonial * 2 + offset) % testimonials.length;
                   const testimonial = testimonials[index];
                   return (
-                    <div key={index} className="p-8 border border-border rounded-lg bg-background/50 backdrop-blur-sm transition-all duration-500">
+                    <div key={`${activeTestimonial}-${offset}`} className="p-8 border border-border rounded-lg bg-background/50 backdrop-blur-sm hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
                       <div className="flex items-center gap-1 mb-4">
                         {Array.from({ length: testimonial.rating }).map((_, i) => (
                           <Star key={i} className="w-4 h-4 fill-primary text-primary" />
@@ -219,10 +247,10 @@ const Portfolio = () => {
               </div>
               <div className="flex items-center justify-between mt-8">
                 <div className="flex items-center gap-2">
-                  {Array.from({ length: Math.ceil(testimonials.length / 2) }).map((_, index) => (
+                  {Array.from({ length: totalTestimonialPages }).map((_, index) => (
                     <button
                       key={index}
-                      onClick={() => setActiveTestimonial(index)}
+                      onClick={() => navigateTestimonial(index > activeTestimonial ? 'right' : 'left', index)}
                       className={`h-1 rounded-full transition-all duration-300 ${
                         index === activeTestimonial ? "w-6 bg-primary" : "w-2 bg-border hover:bg-muted-foreground"
                       }`}
@@ -232,15 +260,15 @@ const Portfolio = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <button
-                    onClick={() => setActiveTestimonial((prev) => (prev - 1 + Math.ceil(testimonials.length / 2)) % Math.ceil(testimonials.length / 2))}
-                    className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-colors duration-300"
+                    onClick={() => navigateTestimonial('left')}
+                    className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary hover:scale-110 transition-all duration-300"
                     aria-label="Previous reviews"
                   >
                     <ChevronLeft className="w-4 h-4" />
                   </button>
                   <button
-                    onClick={() => setActiveTestimonial((prev) => (prev + 1) % Math.ceil(testimonials.length / 2))}
-                    className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-colors duration-300"
+                    onClick={() => navigateTestimonial('right')}
+                    className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary hover:scale-110 transition-all duration-300"
                     aria-label="Next reviews"
                   >
                     <ChevronRight className="w-4 h-4" />
