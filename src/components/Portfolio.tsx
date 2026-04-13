@@ -8,9 +8,29 @@ import project4 from "@/assets/project-4.jpg";
 const Portfolio = () => {
   const [visibleItems, setVisibleItems] = useState<number[]>([]);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const [testimonialAnimating, setTestimonialAnimating] = useState(false);
+  const [testimonialDirection, setTestimonialDirection] = useState<'left' | 'right'>('right');
   const [activeProject, setActiveProject] = useState(0);
   const [isProjectTransitioning, setIsProjectTransitioning] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+
+  const totalTestimonialPages = Math.ceil(4 / 2); // testimonials.length / 2
+
+  const navigateTestimonial = (direction: 'left' | 'right', target?: number) => {
+    if (testimonialAnimating) return;
+    setTestimonialDirection(direction);
+    setTestimonialAnimating(true);
+    setTimeout(() => {
+      if (target !== undefined) {
+        setActiveTestimonial(target);
+      } else if (direction === 'right') {
+        setActiveTestimonial((prev) => (prev + 1) % totalTestimonialPages);
+      } else {
+        setActiveTestimonial((prev) => (prev - 1 + totalTestimonialPages) % totalTestimonialPages);
+      }
+      setTimeout(() => setTestimonialAnimating(false), 50);
+    }, 300);
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
