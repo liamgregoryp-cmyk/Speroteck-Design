@@ -49,11 +49,11 @@ const Portfolio = () => {
 
   const projects = [
     {
-      image: project4,
+      image: projectDiorCologne,
       title: "DIOR",
       location: "eCOMMERCE IMPLEMENTATION",
       description: "Enterprise-level Salesforce Commerce Cloud implementation for the iconic luxury fashion house, delivering a premium digital shopping experience.",
-      url: "https://www.dior.com"
+      url: "https://www.dior.com/en_us/beauty/fragrance"
     },
     {
       image: project1,
