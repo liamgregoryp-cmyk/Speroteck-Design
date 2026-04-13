@@ -160,7 +160,7 @@ const Hero = () => {
               transition: 'opacity 0.4s ease-out 0.1s, transform 0.4s ease-out 0.1s',
             }}
           >
-            We breathe eCommerce for over 20 years. It's not just our specialty — it's our passion.
+            We breathe eCommerce for over 25 years. It's not just our specialty — it's our passion.
           </p>
           <div
             className="flex flex-col sm:flex-row gap-4 justify-center"
