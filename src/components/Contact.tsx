@@ -39,7 +39,6 @@ const Contact = () => {
                 {[
                   { label: "EMAIL", value: "info@speroteck.com", href: "mailto:info@speroteck.com" },
                   { label: "PHONE", value: "1 (847) 508-9229", href: "tel:18475089229" },
-                  { label: "WEBSITE", value: "www.speroteck.com", href: "https://www.speroteck.com" },
                 ].map((item, i) => (
                   <div key={i} className="group">
                     <h4 className="text-minimal text-primary mb-2">{item.label}</h4>
