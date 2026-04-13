@@ -186,57 +186,65 @@ const Portfolio = () => {
               Client <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[hsl(82,75%,55%)]">Reviews</span>
             </h3>
 
-            <div className="relative max-w-2xl">
-              <div className="p-8 border border-border rounded-lg bg-background/50 backdrop-blur-sm transition-all duration-500">
-                <div className="flex items-center gap-1 mb-4">
-                  {Array.from({ length: testimonials[activeTestimonial].rating }).map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-primary text-primary" />
-                  ))}
-                </div>
-                <div className="text-primary text-4xl mb-4 opacity-30">"</div>
-                <p className="text-muted-foreground leading-relaxed mb-6 italic">
-                  {testimonials[activeTestimonial].quote}
-                </p>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm">
-                      {testimonials[activeTestimonial].name.charAt(0)}
-                    </div>
-                    <div>
-                      <p className="text-foreground font-medium text-sm">{testimonials[activeTestimonial].name}</p>
-                      <p className="text-minimal text-muted-foreground">
-                        {testimonials[activeTestimonial].title}, {testimonials[activeTestimonial].company}
+            <div className="relative">
+              <div className="grid md:grid-cols-2 gap-6">
+                {[0, 1].map((offset) => {
+                  const index = (activeTestimonial * 2 + offset) % testimonials.length;
+                  const testimonial = testimonials[index];
+                  return (
+                    <div key={index} className="p-8 border border-border rounded-lg bg-background/50 backdrop-blur-sm transition-all duration-500">
+                      <div className="flex items-center gap-1 mb-4">
+                        {Array.from({ length: testimonial.rating }).map((_, i) => (
+                          <Star key={i} className="w-4 h-4 fill-primary text-primary" />
+                        ))}
+                      </div>
+                      <div className="text-primary text-4xl mb-4 opacity-30">"</div>
+                      <p className="text-muted-foreground leading-relaxed mb-6 italic text-sm">
+                        {testimonial.quote}
                       </p>
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm">
+                          {testimonial.name.charAt(0)}
+                        </div>
+                        <div>
+                          <p className="text-foreground font-medium text-sm">{testimonial.name}</p>
+                          <p className="text-minimal text-muted-foreground">
+                            {testimonial.title}, {testimonial.company}
+                          </p>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={() => setActiveTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
-                      className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-colors duration-300"
-                      aria-label="Previous review"
-                    >
-                      <ChevronLeft className="w-4 h-4" />
-                    </button>
-                    <button
-                      onClick={() => setActiveTestimonial((prev) => (prev + 1) % testimonials.length)}
-                      className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-colors duration-300"
-                      aria-label="Next review"
-                    >
-                      <ChevronRight className="w-4 h-4" />
-                    </button>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2 mt-6">
-                  {testimonials.map((_, index) => (
+                  );
+                })}
+              </div>
+              <div className="flex items-center justify-between mt-8">
+                <div className="flex items-center gap-2">
+                  {Array.from({ length: Math.ceil(testimonials.length / 2) }).map((_, index) => (
                     <button
                       key={index}
                       onClick={() => setActiveTestimonial(index)}
                       className={`h-1 rounded-full transition-all duration-300 ${
                         index === activeTestimonial ? "w-6 bg-primary" : "w-2 bg-border hover:bg-muted-foreground"
                       }`}
-                      aria-label={`Go to review ${index + 1}`}
+                      aria-label={`Go to reviews ${index * 2 + 1}-${index * 2 + 2}`}
                     />
                   ))}
+                </div>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => setActiveTestimonial((prev) => (prev - 1 + Math.ceil(testimonials.length / 2)) % Math.ceil(testimonials.length / 2))}
+                    className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-colors duration-300"
+                    aria-label="Previous reviews"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={() => setActiveTestimonial((prev) => (prev + 1) % Math.ceil(testimonials.length / 2))}
+                    className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-colors duration-300"
+                    aria-label="Next reviews"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
                 </div>
               </div>
             </div>
