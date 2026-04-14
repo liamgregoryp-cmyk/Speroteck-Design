@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useSubscribe } from "@/hooks/useSubscribe";
 import Navigation from "@/components/Navigation";
 import { blogPosts } from "@/data/blogPosts";
 
 const Blog = () => {
   const [activeCategory, setActiveCategory] = useState("ALL");
-  
+  const { email, setEmail, isLoading, subscribe } = useSubscribe();
   const categories = ["ALL", "PLATFORMS", "MIGRATION", "MANAGED SERVICES"];
   
   const filteredPosts = activeCategory === "ALL" 
@@ -122,16 +123,23 @@ const Blog = () => {
             <p className="text-xl text-muted-foreground mb-12">
               Subscribe to our newsletter for the latest insights on eCommerce and digital commerce
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+            <form onSubmit={subscribe} className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
               <input 
                 type="email" 
                 placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="flex-1 px-6 py-4 bg-background border border-border text-foreground placeholder:text-muted-foreground"
+                required
               />
-              <button className="px-8 py-4 bg-primary text-primary-foreground hover:opacity-90 transition-opacity duration-300 font-medium">
-                SUBSCRIBE
+              <button 
+                type="submit"
+                disabled={isLoading}
+                className="px-8 py-4 bg-primary text-primary-foreground hover:opacity-90 transition-opacity duration-300 font-medium disabled:opacity-50"
+              >
+                {isLoading ? "SUBSCRIBING..." : "SUBSCRIBE"}
               </button>
-            </div>
+            </form>
           </div>
         </div>
       </section>
