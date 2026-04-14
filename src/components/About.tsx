@@ -4,6 +4,7 @@ const About = () => {
   const [visible, setVisible] = useState(false);
   const [counters, setCounters] = useState({ years: 0, clients: 0 });
   const [statsVisible, setStatsVisible] = useState(false);
+  const [clientsPop, setClientsPop] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
 
