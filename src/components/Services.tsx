@@ -12,12 +12,18 @@ const Services = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
+          const index = Number(entry.target.getAttribute("data-index"));
           if (entry.isIntersecting) {
-            const index = Number(entry.target.getAttribute("data-index"));
             if (isNaN(index) || index === -1) {
               setHeaderVisible(true);
             } else {
               setVisibleItems((prev) => [...new Set([...prev, index])]);
+            }
+          } else {
+            if (isNaN(index) || index === -1) {
+              setHeaderVisible(false);
+            } else {
+              setVisibleItems((prev) => prev.filter((i) => i !== index));
             }
           }
         });

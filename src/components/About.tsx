@@ -17,18 +17,25 @@ const About = () => {
             }
             if (entry.target === statsRef.current) {
               setStatsVisible(true);
-              // Animate counters
               let frame = 0;
               const totalFrames = 60;
               const interval = setInterval(() => {
                 frame++;
-                const ease = 1 - Math.pow(1 - frame / totalFrames, 3); // easeOutCubic
+                const ease = 1 - Math.pow(1 - frame / totalFrames, 3);
                 setCounters({
                   years: Math.round(ease * 25),
                   clients: Math.round(ease * 500),
                 });
                 if (frame >= totalFrames) clearInterval(interval);
               }, 30);
+            }
+          } else {
+            if (entry.target === sectionRef.current) {
+              setVisible(false);
+            }
+            if (entry.target === statsRef.current) {
+              setStatsVisible(false);
+              setCounters({ years: 0, clients: 0 });
             }
           }
         });

@@ -23,6 +23,9 @@ const StatsBanner = () => {
             });
             if (frame >= total) clearInterval(interval);
           }, 30);
+        } else {
+          setVisible(false);
+          setCounts({ projects: 0, uptime: 0, platforms: 0, satisfaction: 0 });
         }
       },
       { threshold: 0.3 }
