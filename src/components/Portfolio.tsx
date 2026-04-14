@@ -46,6 +46,13 @@ const Portfolio = () => {
               const index = Number(entry.target.getAttribute("data-index"));
               setVisibleItems((prev) => [...new Set([...prev, index])]);
             }
+          } else {
+            if (entry.target === headerRef.current) setHeaderVisible(false);
+            else if (entry.target === reviewsHeaderRef.current) setReviewsHeaderVisible(false);
+            else {
+              const index = Number(entry.target.getAttribute("data-index"));
+              setVisibleItems((prev) => prev.filter((i) => i !== index));
+            }
           }
         });
       },

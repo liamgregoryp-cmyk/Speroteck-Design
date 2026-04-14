@@ -15,6 +15,9 @@ const Contact = () => {
           if (entry.isIntersecting) {
             if (entry.target === sectionRef.current) setVisible(true);
             if (entry.target === platformsRef.current) setPlatformsVisible(true);
+          } else {
+            if (entry.target === sectionRef.current) setVisible(false);
+            if (entry.target === platformsRef.current) setPlatformsVisible(false);
           }
         });
       },
