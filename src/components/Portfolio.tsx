@@ -13,7 +13,11 @@ const Portfolio = () => {
   const [testimonialDirection, setTestimonialDirection] = useState<'left' | 'right'>('right');
   const [activeProject, setActiveProject] = useState(0);
   const [isProjectTransitioning, setIsProjectTransitioning] = useState(false);
+  const [headerVisible, setHeaderVisible] = useState(false);
+  const [reviewsHeaderVisible, setReviewsHeaderVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const reviewsHeaderRef = useRef<HTMLDivElement>(null);
 
   const navigateTestimonial = (direction: 'left' | 'right', target?: number) => {
     if (testimonialAnimating) return;
