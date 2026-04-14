@@ -18,6 +18,7 @@ const About = () => {
             }
             if (entry.target === statsRef.current) {
               setStatsVisible(true);
+              setClientsPop(false);
               let frame = 0;
               const totalFrames = 60;
               const interval = setInterval(() => {
@@ -27,7 +28,11 @@ const About = () => {
                   years: Math.round(ease * 25),
                   clients: Math.round(ease * 500),
                 });
-                if (frame >= totalFrames) clearInterval(interval);
+                if (frame >= totalFrames) {
+                  clearInterval(interval);
+                  setClientsPop(true);
+                  setTimeout(() => setClientsPop(false), 400);
+                }
               }, 30);
             }
           } else {
