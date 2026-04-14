@@ -3,16 +3,13 @@ import { Link } from "react-router-dom";
 import SperoteckLogo from "./SperoteckLogo";
 
 const Hero = () => {
-  const [phase, setPhase] = useState<'fullscreen' | 'shrinking' | 'settled'>('fullscreen');
   const [showText, setShowText] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const t1 = setTimeout(() => setPhase('shrinking'), 1200);
-    const t2 = setTimeout(() => setPhase('settled'), 4200);
-    const t3 = setTimeout(() => setShowText(true), 2200);
-    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
+    const t = setTimeout(() => setShowText(true), 400);
+    return () => clearTimeout(t);
   }, []);
 
   useEffect(() => {
@@ -26,9 +23,6 @@ const Hero = () => {
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
-
-  const isShrinking = phase === 'shrinking' || phase === 'settled';
-  const isSettled = phase === 'settled';
 
   return (
     <section ref={sectionRef} className="relative h-screen flex items-center justify-center overflow-hidden bg-background">
@@ -81,57 +75,9 @@ const Hero = () => {
       ))}
 
       <div className="relative z-10 flex flex-col items-center mt-16">
-        {/* Logo with cinematic intro */}
-        <div
-          className="relative flex items-center justify-center"
-          style={{
-            width: 364,
-            height: 364,
-            transform: isShrinking
-              ? `translate(${mousePos.x * 15}px, ${mousePos.y * 15}px) scale(1)`
-              : 'scale(2.8)',
-            opacity: phase === 'fullscreen' ? 0 : 1,
-            transition: isShrinking
-              ? 'transform 3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease-out'
-              : 'opacity 0.8s ease-out',
-          }}
-        >
-          <div
-            style={{
-              transform: isShrinking ? 'rotate(0deg)' : 'rotate(720deg)',
-              transition: isShrinking ? 'transform 3s cubic-bezier(0.16, 1, 0.3, 1)' : 'none',
-            }}
-          >
-            <SperoteckLogo
-              size={364}
-              className={`drop-shadow-[0_0_80px_hsl(82,75%,42%,0.4)] ${!isShrinking ? 'drop-shadow-[0_0_120px_hsl(82,75%,42%,0.8)]' : ''}`}
-            />
-          </div>
-          {/* Rings appear after settled */}
-          <div
-            className="absolute inset-0 m-auto border border-primary/10 rounded-full animate-ring-pulse"
-            style={{
-              width: 364 * 1.6, height: 364 * 1.6,
-              opacity: isSettled ? 1 : 0,
-              transition: 'opacity 0.8s ease-out',
-            }}
-          />
-          <div
-            className="absolute inset-0 m-auto border border-primary/5 rounded-full animate-ring-pulse-slow"
-            style={{
-              width: 364 * 2.0, height: 364 * 2.0,
-              opacity: isSettled ? 1 : 0,
-              transition: 'opacity 1s ease-out 0.2s',
-            }}
-          />
-          <div
-            className="absolute inset-0 m-auto border border-dashed border-primary/[0.07] rounded-full animate-ring-reverse"
-            style={{
-              width: 364 * 2.3, height: 364 * 2.3,
-              opacity: isSettled ? 1 : 0,
-              transition: 'opacity 1s ease-out 0.4s',
-            }}
-          />
+        {/* Logo - static, no animation */}
+        <div className="relative flex items-center justify-center" style={{ width: 364, height: 364 }}>
+          <SperoteckLogo size={364} />
         </div>
 
         {/* Hero Text - appears after logo settles */}
