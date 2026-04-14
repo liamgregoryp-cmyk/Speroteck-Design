@@ -272,9 +272,8 @@ const Portfolio = () => {
                 </span>
               ))}
             </h3>
-          </div>
 
-            <div className="relative overflow-hidden">
+            <div className="relative overflow-hidden mt-16">
               <div className="grid md:grid-cols-2 gap-6">
                 {[0, 1].map((offset) => {
                   const index = (activeTestimonial + offset) % testimonials.length;
