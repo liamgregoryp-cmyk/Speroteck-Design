@@ -4,6 +4,7 @@ const About = () => {
   const [visible, setVisible] = useState(false);
   const [counters, setCounters] = useState({ years: 0, clients: 0 });
   const [statsVisible, setStatsVisible] = useState(false);
+  const [clientsPop, setClientsPop] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
 
@@ -17,6 +18,7 @@ const About = () => {
             }
             if (entry.target === statsRef.current) {
               setStatsVisible(true);
+              setClientsPop(false);
               let frame = 0;
               const totalFrames = 60;
               const interval = setInterval(() => {
@@ -26,7 +28,11 @@ const About = () => {
                   years: Math.round(ease * 25),
                   clients: Math.round(ease * 500),
                 });
-                if (frame >= totalFrames) clearInterval(interval);
+                if (frame >= totalFrames) {
+                  clearInterval(interval);
+                  setClientsPop(true);
+                  setTimeout(() => setClientsPop(false), 400);
+                }
               }, 30);
             }
           } else {
@@ -155,7 +161,7 @@ const About = () => {
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.05] to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500" />
                   <h4 className="text-minimal text-primary mb-2">CLIENTS</h4>
-                  <p className={`text-4xl font-light text-foreground ${statsVisible ? "counter-glow" : ""}`}>
+                  <p className={`text-4xl font-light text-foreground transition-transform duration-300 ease-out ${statsVisible ? "counter-glow" : ""} ${clientsPop ? "scale-125" : "scale-100"}`}>
                     {counters.clients}+
                   </p>
                 </div>
