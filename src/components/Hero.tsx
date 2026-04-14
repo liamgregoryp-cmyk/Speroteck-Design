@@ -3,13 +3,16 @@ import { Link } from "react-router-dom";
 import SperoteckLogo from "./SperoteckLogo";
 
 const Hero = () => {
+  const [phase, setPhase] = useState<'fullscreen' | 'shrinking' | 'settled'>('fullscreen');
   const [showText, setShowText] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const t = setTimeout(() => setShowText(true), 400);
-    return () => clearTimeout(t);
+    const t1 = setTimeout(() => setPhase('shrinking'), 1200);
+    const t2 = setTimeout(() => setPhase('settled'), 4200);
+    const t3 = setTimeout(() => setShowText(true), 2200);
+    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
   }, []);
 
   useEffect(() => {
