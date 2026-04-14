@@ -128,8 +128,11 @@ const About = () => {
               {/* Pillars */}
               <div className="grid md:grid-cols-2 gap-12 mb-24">
                 {/* Charity */}
-                <div className="rounded-2xl border border-border overflow-hidden hover:border-primary/40 transition-colors duration-300">
-                  <img src={socialCharity} alt="Charity and community event" loading="lazy" width={800} height={600} className="w-full h-48 object-cover" />
+                <div className="rounded-2xl border border-border overflow-hidden hover:border-primary/40 transition-all duration-500 group">
+                  <div className="relative h-56 overflow-hidden">
+                    <img src={socialCharity} alt="Charity and community event" loading="lazy" width={1280} height={720} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+                  </div>
                   <div className="p-10 space-y-6">
                     <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
                       <Heart className="w-7 h-7 text-primary" />
@@ -152,8 +155,11 @@ const About = () => {
                 </div>
 
                 {/* Green IT */}
-                <div className="rounded-2xl border border-border overflow-hidden hover:border-primary/40 transition-colors duration-300">
-                  <img src={socialGreenIt} alt="Green IT sustainability" loading="lazy" width={800} height={600} className="w-full h-48 object-cover" />
+                <div className="rounded-2xl border border-border overflow-hidden hover:border-primary/40 transition-all duration-500 group">
+                  <div className="relative h-56 overflow-hidden">
+                    <img src={socialGreenIt} alt="Green IT sustainability" loading="lazy" width={1280} height={720} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+                  </div>
                   <div className="p-10 space-y-6">
                     <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
                       <Leaf className="w-7 h-7 text-primary" />
@@ -175,8 +181,11 @@ const About = () => {
                 </div>
 
                 {/* Supporting Children */}
-                <div className="rounded-2xl border border-border overflow-hidden hover:border-primary/40 transition-colors duration-300">
-                  <img src={socialHealthcare} alt="Healthcare support for children" loading="lazy" width={800} height={600} className="w-full h-48 object-cover" />
+                <div className="rounded-2xl border border-border overflow-hidden hover:border-primary/40 transition-all duration-500 group">
+                  <div className="relative h-56 overflow-hidden">
+                    <img src={socialHealthcare} alt="Healthcare support for children" loading="lazy" width={1280} height={720} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+                  </div>
                   <div className="p-10 space-y-6">
                     <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
                       <HandHeart className="w-7 h-7 text-primary" />
@@ -197,8 +206,11 @@ const About = () => {
                 </div>
 
                 {/* Community */}
-                <div className="rounded-2xl border border-border overflow-hidden hover:border-primary/40 transition-colors duration-300">
-                  <img src={socialEducation} alt="IT education and mentorship" loading="lazy" width={800} height={600} className="w-full h-48 object-cover" />
+                <div className="rounded-2xl border border-border overflow-hidden hover:border-primary/40 transition-all duration-500 group">
+                  <div className="relative h-56 overflow-hidden">
+                    <img src={socialEducation} alt="IT education and mentorship" loading="lazy" width={1280} height={720} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+                  </div>
                   <div className="p-10 space-y-6">
                     <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
                       <Users className="w-7 h-7 text-primary" />
