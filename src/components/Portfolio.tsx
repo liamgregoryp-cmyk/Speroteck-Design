@@ -13,7 +13,11 @@ const Portfolio = () => {
   const [testimonialDirection, setTestimonialDirection] = useState<'left' | 'right'>('right');
   const [activeProject, setActiveProject] = useState(0);
   const [isProjectTransitioning, setIsProjectTransitioning] = useState(false);
+  const [headerVisible, setHeaderVisible] = useState(false);
+  const [reviewsHeaderVisible, setReviewsHeaderVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const reviewsHeaderRef = useRef<HTMLDivElement>(null);
 
   const navigateTestimonial = (direction: 'left' | 'right', target?: number) => {
     if (testimonialAnimating) return;
@@ -36,8 +40,12 @@ const Portfolio = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const index = Number(entry.target.getAttribute("data-index"));
-            setVisibleItems((prev) => [...new Set([...prev, index])]);
+            if (entry.target === headerRef.current) setHeaderVisible(true);
+            else if (entry.target === reviewsHeaderRef.current) setReviewsHeaderVisible(true);
+            else {
+              const index = Number(entry.target.getAttribute("data-index"));
+              setVisibleItems((prev) => [...new Set([...prev, index])]);
+            }
           }
         });
       },
@@ -45,6 +53,8 @@ const Portfolio = () => {
     );
     const items = sectionRef.current?.querySelectorAll("[data-index]");
     items?.forEach((item) => observer.observe(item));
+    if (headerRef.current) observer.observe(headerRef.current);
+    if (reviewsHeaderRef.current) observer.observe(reviewsHeaderRef.current);
     return () => observer.disconnect();
   }, []);
 
@@ -117,13 +127,42 @@ const Portfolio = () => {
 
       <div className="container mx-auto px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-20">
-            <h2 className="text-minimal text-primary mb-4 flex items-center gap-3">
-              <span className="w-8 h-px bg-primary" />
+          <div ref={headerRef} className="mb-20">
+            <h2
+              className={`text-minimal text-primary mb-4 flex items-center gap-3 transition-all duration-700 ${
+                headerVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
+              }`}
+            >
+              <span className={`h-px bg-primary transition-all duration-1000 delay-200 ${headerVisible ? "w-8" : "w-0"}`} />
               CLIENT STORIES
             </h2>
-            <h3 className="text-4xl md:text-6xl font-light text-architectural">
-              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[hsl(82,75%,55%)]">Work</span>
+            <h3 className="text-4xl md:text-6xl font-light text-architectural overflow-hidden">
+              {"Our ".split("").map((char, i) => (
+                <span
+                  key={i}
+                  className="inline-block transition-all duration-500"
+                  style={{
+                    opacity: headerVisible ? 1 : 0,
+                    transform: headerVisible ? "translateY(0)" : "translateY(100%)",
+                    transitionDelay: `${i * 40 + 200}ms`,
+                  }}
+                >
+                  {char === " " ? "\u00A0" : char}
+                </span>
+              ))}
+              {"Work".split("").map((char, i) => (
+                <span
+                  key={`w-${i}`}
+                  className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-primary to-[hsl(82,75%,55%)] transition-all duration-500"
+                  style={{
+                    opacity: headerVisible ? 1 : 0,
+                    transform: headerVisible ? "translateY(0)" : "translateY(100%)",
+                    transitionDelay: `${(i + 4) * 40 + 200}ms`,
+                  }}
+                >
+                  {char}
+                </span>
+              ))}
             </h3>
           </div>
 
@@ -196,16 +235,45 @@ const Portfolio = () => {
           </div>
 
           {/* Client Testimonials */}
-          <div className="mt-32">
-            <h2 className="text-minimal text-primary mb-4 flex items-center gap-3">
-              <span className="w-8 h-px bg-primary" />
+          <div ref={reviewsHeaderRef} className="mt-32">
+            <h2
+              className={`text-minimal text-primary mb-4 flex items-center gap-3 transition-all duration-700 ${
+                reviewsHeaderVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
+              }`}
+            >
+              <span className={`h-px bg-primary transition-all duration-1000 delay-200 ${reviewsHeaderVisible ? "w-8" : "w-0"}`} />
               WHAT OUR CLIENTS SAY
             </h2>
-            <h3 className="text-4xl md:text-5xl font-light text-architectural mb-16">
-              Client <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[hsl(82,75%,55%)]">Reviews</span>
+            <h3 className="text-4xl md:text-5xl font-light text-architectural mb-16 overflow-hidden">
+              {"Client ".split("").map((char, i) => (
+                <span
+                  key={i}
+                  className="inline-block transition-all duration-500"
+                  style={{
+                    opacity: reviewsHeaderVisible ? 1 : 0,
+                    transform: reviewsHeaderVisible ? "translateY(0)" : "translateY(100%)",
+                    transitionDelay: `${i * 40 + 200}ms`,
+                  }}
+                >
+                  {char === " " ? "\u00A0" : char}
+                </span>
+              ))}
+              {"Reviews".split("").map((char, i) => (
+                <span
+                  key={`r-${i}`}
+                  className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-primary to-[hsl(82,75%,55%)] transition-all duration-500"
+                  style={{
+                    opacity: reviewsHeaderVisible ? 1 : 0,
+                    transform: reviewsHeaderVisible ? "translateY(0)" : "translateY(100%)",
+                    transitionDelay: `${(i + 7) * 40 + 200}ms`,
+                  }}
+                >
+                  {char}
+                </span>
+              ))}
             </h3>
 
-            <div className="relative overflow-hidden">
+            <div className="relative overflow-hidden mt-16">
               <div className="grid md:grid-cols-2 gap-6">
                 {[0, 1].map((offset) => {
                   const index = (activeTestimonial + offset) % testimonials.length;

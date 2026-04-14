@@ -281,4 +281,104 @@
   @keyframes draw-path {
     to { stroke-dashoffset: 0; }
   }
+
+  /* Scroll-triggered reveal animations */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .scroll-reveal-left {
+    opacity: 0;
+    transform: translateX(-60px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .scroll-reveal-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .scroll-reveal-right {
+    opacity: 0;
+    transform: translateX(60px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .scroll-reveal-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .scroll-reveal-scale {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .scroll-reveal-scale.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Word-by-word reveal */
+  .word-reveal span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px) rotateX(30deg);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+  .word-reveal.visible span {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg);
+  }
+
+  /* Counting number glow */
+  .counter-glow {
+    text-shadow: 0 0 30px hsl(82, 75%, 42%, 0.3);
+  }
+
+  /* Animated gradient border */
+  @keyframes gradient-border-spin {
+    0% { --angle: 0deg; }
+    100% { --angle: 360deg; }
+  }
+
+  /* Line drawing animation */
+  .line-draw {
+    width: 0;
+    transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .line-draw.visible {
+    width: 100%;
+  }
+
+  /* Floating particles for sections */
+  @keyframes float-particle {
+    0%, 100% { transform: translateY(0) translateX(0); opacity: 0.4; }
+    33% { transform: translateY(-30px) translateX(15px); opacity: 0.8; }
+    66% { transform: translateY(-15px) translateX(-10px); opacity: 0.3; }
+  }
+
+  .animate-float-particle {
+    animation: float-particle 8s ease-in-out infinite;
+  }
+
+  /* Marquee / ticker for logos */
+  @keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .animate-scroll-left {
+    animation: scroll-left 25s linear infinite;
+  }
+
+  /* Smooth parallax-like scroll */
+  .parallax-slow {
+    will-change: transform;
+    transition: transform 0.1s linear;
+  }
 }
