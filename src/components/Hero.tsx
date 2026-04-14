@@ -27,6 +27,8 @@ const Hero = () => {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
+  const isShrinking = phase === 'shrinking' || phase === 'settled';
+
   return (
     <section ref={sectionRef} className="relative h-screen flex items-center justify-center overflow-hidden bg-background">
       {/* Animated background grid */}
