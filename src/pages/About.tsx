@@ -231,6 +231,57 @@ const About = () => {
                     </div>
                   </div>
                 </div>
+
+                {/* Ukraine Support */}
+                <div className="rounded-2xl border border-border overflow-hidden hover:border-primary/40 transition-all duration-500 group">
+                  <div className="relative h-56 overflow-hidden">
+                    <img src={socialUkraine} alt="Ukraine humanitarian support" loading="lazy" width={1280} height={720} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+                  </div>
+                  <div className="p-10 space-y-6">
+                    <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <Flag className="w-7 h-7 text-primary" />
+                    </div>
+                    <h3 className="text-2xl font-light">Stand With Ukraine</h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Since the beginning of the conflict, Speroteck has stood firmly with Ukraine.
+                      We organize fundraisers, supply humanitarian aid, and support displaced
+                      families with essential resources. Our team members actively volunteer,
+                      coordinating logistics for medical supplies, food, and equipment for
+                      communities in need.
+                    </p>
+                    <div className="pt-4 border-t border-border">
+                      <p className="text-sm text-muted-foreground italic">
+                        Standing together for peace, resilience, and a brighter future.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Homeless Animals */}
+                <div className="rounded-2xl border border-border overflow-hidden hover:border-primary/40 transition-all duration-500 group">
+                  <div className="relative h-56 overflow-hidden">
+                    <img src={socialAnimals} alt="Homeless animal shelter support" loading="lazy" width={1280} height={720} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+                  </div>
+                  <div className="p-10 space-y-6">
+                    <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <PawPrint className="w-7 h-7 text-primary" />
+                    </div>
+                    <h3 className="text-2xl font-light">Homeless Animals</h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      We believe compassion extends to all living beings. Our team regularly
+                      supports local animal shelters through donations, volunteer work, and
+                      awareness campaigns. From funding veterinary care to organizing adoption
+                      drives, we help give homeless animals a second chance at a loving home.
+                    </p>
+                    <div className="pt-4 border-t border-border">
+                      <p className="text-sm text-muted-foreground italic">
+                        Every life deserves care, comfort, and a place to call home.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
