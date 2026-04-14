@@ -1,3 +1,7 @@
+import project1 from "@/assets/project-1.jpg";
+import project2 from "@/assets/project-2.jpg";
+import project3 from "@/assets/project-3.jpg";
+
 export interface BlogPost {
   id: string;
   title: string;
@@ -62,7 +66,7 @@ There's no one-size-fits-all answer. The best platform depends on your specific 
     date: "2024-03-15",
     readTime: "8 min read",
     category: "PLATFORMS",
-    image: "/src/assets/project-1.jpg"
+    image: project1
   },
   {
     id: "ecommerce-migration-guide",
@@ -123,7 +127,7 @@ Migration is complex but manageable with proper planning and experienced partner
     date: "2024-03-10",
     readTime: "6 min read",
     category: "MIGRATION",
-    image: "/src/assets/project-2.jpg"
+    image: project2
   },
   {
     id: "managed-services-benefits",
@@ -184,6 +188,6 @@ In today's competitive eCommerce landscape, managed services aren't a luxury —
     date: "2024-03-05",
     readTime: "10 min read",
     category: "MANAGED SERVICES",
-    image: "/src/assets/project-3.jpg"
+    image: project3
   }
 ];
