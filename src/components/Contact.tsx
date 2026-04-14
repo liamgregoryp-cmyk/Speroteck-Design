@@ -156,13 +156,21 @@ const Contact = () => {
                     href={platform.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`group flex items-center gap-4 py-3 px-4 rounded-lg hover:bg-primary/[0.03] transition-all duration-500 border border-transparent hover:border-primary/10 cursor-pointer ${
+                    className={`group relative flex items-center gap-4 py-3 px-4 rounded-lg hover:bg-primary/[0.03] transition-all duration-500 border border-transparent hover:border-primary/10 cursor-pointer ${
                       platformsVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
                     }`}
                     style={{ transitionDelay: `${i * 100 + 200}ms` }}
                   >
                     <span className="w-2 h-2 bg-primary/40 rounded-full group-hover:bg-primary group-hover:shadow-[0_0_8px_hsl(82,75%,42%,0.5)] transition-all duration-300" />
                     <span className="text-lg cursor-pointer">{platform.name}</span>
+                    <img
+                      src={platform.logo}
+                      alt={platform.name}
+                      loading="lazy"
+                      width={48}
+                      height={48}
+                      className="absolute right-4 w-12 h-12 object-contain opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 ease-out drop-shadow-lg"
+                    />
                   </a>
                 ))}
               </div>
