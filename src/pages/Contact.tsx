@@ -80,10 +80,10 @@ const Contact = () => {
                 <div className="pt-12 border-t border-border mt-12">
                   <h3 className="text-minimal text-primary mb-6">PLATFORMS WE WORK WITH</h3>
                   <div className="space-y-4">
-                    <span className="block text-xl">Magento / Adobe Commerce</span>
-                    <span className="block text-xl">Shopify / Shopify Plus</span>
-                    <span className="block text-xl">BigCommerce</span>
-                    <span className="block text-xl">Salesforce Commerce Cloud</span>
+                    <a href="https://business.adobe.com/products/magento/magento-commerce.html" target="_blank" rel="noopener noreferrer" className="block text-xl hover:text-primary transition-colors duration-300">Magento / Adobe Commerce</a>
+                    <a href="https://www.shopify.com/" target="_blank" rel="noopener noreferrer" className="block text-xl hover:text-primary transition-colors duration-300">Shopify / Shopify Plus</a>
+                    <a href="https://www.bigcommerce.com/" target="_blank" rel="noopener noreferrer" className="block text-xl hover:text-primary transition-colors duration-300">BigCommerce</a>
+                    <a href="https://www.salesforce.com/commerce/" target="_blank" rel="noopener noreferrer" className="block text-xl hover:text-primary transition-colors duration-300">Salesforce Commerce Cloud</a>
                   </div>
                 </div>
               </div>
