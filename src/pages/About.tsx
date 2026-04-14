@@ -1,6 +1,10 @@
 import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import { Heart, Leaf, Users, HandHeart } from "lucide-react";
+import socialCharity from "@/assets/social-charity.jpg";
+import socialGreenIt from "@/assets/social-green-it.jpg";
+import socialHealthcare from "@/assets/social-healthcare.jpg";
+import socialEducation from "@/assets/social-education.jpg";
 
 const About = () => {
   const [activeTab, setActiveTab] = useState<"about" | "social">("about");
@@ -124,81 +128,93 @@ const About = () => {
               {/* Pillars */}
               <div className="grid md:grid-cols-2 gap-12 mb-24">
                 {/* Charity */}
-                <div className="rounded-2xl border border-border p-10 space-y-6 hover:border-primary/40 transition-colors duration-300">
-                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
-                    <Heart className="w-7 h-7 text-primary" />
-                  </div>
-                  <h3 className="text-2xl font-light">Charity & Community</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Together with the Chernihiv IT Cluster, we organize charity events to support
-                    children affected by conflict. From funding medical equipment to providing
-                    laptops for young patients' education, we help children like Sashko from
-                    Mariupol continue learning and dreaming during their recovery.
-                  </p>
-                  <div className="pt-4 border-t border-border">
-                    <p className="text-sm text-muted-foreground italic">
-                      "An ordinary laptop means new opportunities, online communication, and a
-                      significant reduction in stress — it helps children move on, learn, and
-                      try new things."
+                <div className="rounded-2xl border border-border overflow-hidden hover:border-primary/40 transition-colors duration-300">
+                  <img src={socialCharity} alt="Charity and community event" loading="lazy" width={800} height={600} className="w-full h-48 object-cover" />
+                  <div className="p-10 space-y-6">
+                    <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <Heart className="w-7 h-7 text-primary" />
+                    </div>
+                    <h3 className="text-2xl font-light">Charity & Community</h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Together with the Chernihiv IT Cluster, we organize charity events to support
+                      children affected by conflict. From funding medical equipment to providing
+                      laptops for young patients' education, we help children like Sashko from
+                      Mariupol continue learning and dreaming during their recovery.
                     </p>
+                    <div className="pt-4 border-t border-border">
+                      <p className="text-sm text-muted-foreground italic">
+                        "An ordinary laptop means new opportunities, online communication, and a
+                        significant reduction in stress — it helps children move on, learn, and
+                        try new things."
+                      </p>
+                    </div>
                   </div>
                 </div>
 
                 {/* Green IT */}
-                <div className="rounded-2xl border border-border p-10 space-y-6 hover:border-primary/40 transition-colors duration-300">
-                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
-                    <Leaf className="w-7 h-7 text-primary" />
-                  </div>
-                  <h3 className="text-2xl font-light">Green IT</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Digital technologies account for roughly 4% of global CO₂ emissions. We
-                    champion Green IT practices — optimizing code efficiency, choosing
-                    energy-conscious hosting, and building sustainable digital solutions that
-                    minimize our environmental footprint while maximizing performance.
-                  </p>
-                  <div className="pt-4 border-t border-border">
-                    <p className="text-sm text-muted-foreground italic">
-                      We are committed to reducing the environmental impact of every project
-                      we deliver.
+                <div className="rounded-2xl border border-border overflow-hidden hover:border-primary/40 transition-colors duration-300">
+                  <img src={socialGreenIt} alt="Green IT sustainability" loading="lazy" width={800} height={600} className="w-full h-48 object-cover" />
+                  <div className="p-10 space-y-6">
+                    <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <Leaf className="w-7 h-7 text-primary" />
+                    </div>
+                    <h3 className="text-2xl font-light">Green IT</h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Digital technologies account for roughly 4% of global CO₂ emissions. We
+                      champion Green IT practices — optimizing code efficiency, choosing
+                      energy-conscious hosting, and building sustainable digital solutions that
+                      minimize our environmental footprint while maximizing performance.
                     </p>
+                    <div className="pt-4 border-t border-border">
+                      <p className="text-sm text-muted-foreground italic">
+                        We are committed to reducing the environmental impact of every project
+                        we deliver.
+                      </p>
+                    </div>
                   </div>
                 </div>
 
                 {/* Supporting Children */}
-                <div className="rounded-2xl border border-border p-10 space-y-6 hover:border-primary/40 transition-colors duration-300">
-                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
-                    <HandHeart className="w-7 h-7 text-primary" />
-                  </div>
-                  <h3 className="text-2xl font-light">Healthcare Support</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    We partner with St. Mykola's Lviv Children's Hospital to support young
-                    patients in the hematological oncology department. Our fundraising efforts
-                    provide essential tools for children's education and recovery, helping them
-                    maintain hope and connection during treatment.
-                  </p>
-                  <div className="pt-4 border-t border-border">
-                    <p className="text-sm text-muted-foreground italic">
-                      Supporting the next generation through their toughest battles.
+                <div className="rounded-2xl border border-border overflow-hidden hover:border-primary/40 transition-colors duration-300">
+                  <img src={socialHealthcare} alt="Healthcare support for children" loading="lazy" width={800} height={600} className="w-full h-48 object-cover" />
+                  <div className="p-10 space-y-6">
+                    <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <HandHeart className="w-7 h-7 text-primary" />
+                    </div>
+                    <h3 className="text-2xl font-light">Healthcare Support</h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      We partner with St. Mykola's Lviv Children's Hospital to support young
+                      patients in the hematological oncology department. Our fundraising efforts
+                      provide essential tools for children's education and recovery, helping them
+                      maintain hope and connection during treatment.
                     </p>
+                    <div className="pt-4 border-t border-border">
+                      <p className="text-sm text-muted-foreground italic">
+                        Supporting the next generation through their toughest battles.
+                      </p>
+                    </div>
                   </div>
                 </div>
 
                 {/* Community */}
-                <div className="rounded-2xl border border-border p-10 space-y-6 hover:border-primary/40 transition-colors duration-300">
-                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
-                    <Users className="w-7 h-7 text-primary" />
-                  </div>
-                  <h3 className="text-2xl font-light">IT Community & Education</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Through partnerships with regional IT clusters, we invest in education and
-                    mentorship programs. Our PWA Kit courses and knowledge-sharing initiatives
-                    help cultivate the next wave of tech talent, ensuring a stronger, more
-                    inclusive industry for everyone.
-                  </p>
-                  <div className="pt-4 border-t border-border">
-                    <p className="text-sm text-muted-foreground italic">
-                      Growing the community that grows the future.
+                <div className="rounded-2xl border border-border overflow-hidden hover:border-primary/40 transition-colors duration-300">
+                  <img src={socialEducation} alt="IT education and mentorship" loading="lazy" width={800} height={600} className="w-full h-48 object-cover" />
+                  <div className="p-10 space-y-6">
+                    <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <Users className="w-7 h-7 text-primary" />
+                    </div>
+                    <h3 className="text-2xl font-light">IT Community & Education</h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Through partnerships with regional IT clusters, we invest in education and
+                      mentorship programs. Our PWA Kit courses and knowledge-sharing initiatives
+                      help cultivate the next wave of tech talent, ensuring a stronger, more
+                      inclusive industry for everyone.
                     </p>
+                    <div className="pt-4 border-t border-border">
+                      <p className="text-sm text-muted-foreground italic">
+                        Growing the community that grows the future.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
