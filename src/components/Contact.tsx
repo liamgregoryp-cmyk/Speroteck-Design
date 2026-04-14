@@ -34,11 +34,11 @@ const Contact = () => {
   }, []);
 
   const platforms = [
-    { name: "Salesforce Commerce Cloud", url: "https://www.salesforce.com/commerce/" },
-    { name: "Shopify / Shopify Plus", url: "https://www.shopify.com/" },
-    { name: "BigCommerce", url: "https://www.bigcommerce.com/" },
-    { name: "Magento / Adobe Commerce", url: "https://business.adobe.com/products/magento/magento-commerce.html" },
-    { name: "Shopware", url: "https://www.shopware.com/" },
+    { name: "Salesforce Commerce Cloud", url: "https://www.salesforce.com/commerce/", logo: platformSalesforce },
+    { name: "Shopify / Shopify Plus", url: "https://www.shopify.com/", logo: platformShopify },
+    { name: "BigCommerce", url: "https://www.bigcommerce.com/", logo: platformBigcommerce },
+    { name: "Magento / Adobe Commerce", url: "https://business.adobe.com/products/magento/magento-commerce.html", logo: platformMagento },
+    { name: "Shopware", url: "https://www.shopware.com/", logo: platformShopware },
   ];
 
   return (
