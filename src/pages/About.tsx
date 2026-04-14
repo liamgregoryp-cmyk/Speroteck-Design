@@ -1,10 +1,12 @@
 import { useState } from "react";
 import Navigation from "@/components/Navigation";
-import { Heart, Leaf, Users, HandHeart } from "lucide-react";
+import { Heart, Leaf, Users, HandHeart, Flag, PawPrint } from "lucide-react";
 import socialCharity from "@/assets/social-charity.jpg";
 import socialGreenIt from "@/assets/social-green-it.jpg";
 import socialHealthcare from "@/assets/social-healthcare.jpg";
 import socialEducation from "@/assets/social-education.jpg";
+import socialUkraine from "@/assets/social-ukraine.jpg";
+import socialAnimals from "@/assets/social-animals.jpg";
 
 const About = () => {
   const [activeTab, setActiveTab] = useState<"about" | "social">("about");
