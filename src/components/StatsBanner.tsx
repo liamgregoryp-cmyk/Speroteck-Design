@@ -16,7 +16,7 @@ const StatsBanner = () => {
             frame++;
             const ease = 1 - Math.pow(1 - frame / total, 3);
             setCounts({
-              projects: Math.round(ease * 1000),
+              projects: Math.round(ease * 500),
               uptime: Math.round(ease * 999) / 10,
               platforms: Math.round(ease * 6),
               satisfaction: Math.round(ease * 99),
