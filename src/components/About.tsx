@@ -161,7 +161,7 @@ const About = () => {
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.05] to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500" />
                   <h4 className="text-minimal text-primary mb-2">CLIENTS</h4>
-                  <p className={`text-4xl font-light text-foreground ${statsVisible ? "counter-glow" : ""}`}>
+                  <p className={`text-4xl font-light text-foreground transition-transform duration-300 ease-out ${statsVisible ? "counter-glow" : ""} ${clientsPop ? "scale-125" : "scale-100"}`}>
                     {counters.clients}+
                   </p>
                 </div>
