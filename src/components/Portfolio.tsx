@@ -40,8 +40,12 @@ const Portfolio = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const index = Number(entry.target.getAttribute("data-index"));
-            setVisibleItems((prev) => [...new Set([...prev, index])]);
+            if (entry.target === headerRef.current) setHeaderVisible(true);
+            else if (entry.target === reviewsHeaderRef.current) setReviewsHeaderVisible(true);
+            else {
+              const index = Number(entry.target.getAttribute("data-index"));
+              setVisibleItems((prev) => [...new Set([...prev, index])]);
+            }
           }
         });
       },
@@ -49,6 +53,8 @@ const Portfolio = () => {
     );
     const items = sectionRef.current?.querySelectorAll("[data-index]");
     items?.forEach((item) => observer.observe(item));
+    if (headerRef.current) observer.observe(headerRef.current);
+    if (reviewsHeaderRef.current) observer.observe(reviewsHeaderRef.current);
     return () => observer.disconnect();
   }, []);
 
