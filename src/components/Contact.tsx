@@ -1,6 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import platformSalesforce from "@/assets/platform-salesforce.png";
+import platformShopify from "@/assets/platform-shopify.png";
+import platformBigcommerce from "@/assets/platform-bigcommerce.png";
+import platformMagento from "@/assets/platform-magento.png";
+import platformShopware from "@/assets/platform-shopware.png";
 
 const Contact = () => {
   const [visible, setVisible] = useState(false);
