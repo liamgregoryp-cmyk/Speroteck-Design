@@ -3,13 +3,16 @@ import { Link } from "react-router-dom";
 import SperoteckLogo from "./SperoteckLogo";
 
 const Hero = () => {
+  const [phase, setPhase] = useState<'fullscreen' | 'shrinking' | 'settled'>('fullscreen');
   const [showText, setShowText] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const t = setTimeout(() => setShowText(true), 400);
-    return () => clearTimeout(t);
+    const t1 = setTimeout(() => setPhase('shrinking'), 1200);
+    const t2 = setTimeout(() => setPhase('settled'), 4200);
+    const t3 = setTimeout(() => setShowText(true), 2200);
+    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
   }, []);
 
   useEffect(() => {
@@ -23,6 +26,8 @@ const Hero = () => {
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
+
+  const isShrinking = phase === 'shrinking' || phase === 'settled';
 
   return (
     <section ref={sectionRef} className="relative h-screen flex items-center justify-center overflow-hidden bg-background">
@@ -75,12 +80,28 @@ const Hero = () => {
       ))}
 
       <div className="relative z-10 flex flex-col items-center mt-16">
-        {/* Logo - static, no animation */}
-        <div className="relative flex items-center justify-center" style={{ width: 364, height: 364 }}>
-          <SperoteckLogo size={364} />
+        {/* Logo with spin intro, then static */}
+        <div
+          className="relative flex items-center justify-center"
+          style={{
+            width: 364,
+            height: 364,
+            transform: isShrinking ? 'scale(1)' : 'scale(2.8)',
+            opacity: phase === 'fullscreen' ? 0 : 1,
+            transition: isShrinking
+              ? 'transform 3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease-out'
+              : 'opacity 0.8s ease-out',
+          }}
+        >
+          <div
+            style={{
+              transform: isShrinking ? 'rotate(0deg)' : 'rotate(720deg)',
+              transition: isShrinking ? 'transform 3s cubic-bezier(0.16, 1, 0.3, 1)' : 'none',
+            }}
+          >
+            <SperoteckLogo size={364} />
+          </div>
         </div>
-
-        {/* Hero Text - appears after logo settles */}
         <div className="text-center mt-12 max-w-4xl mx-auto px-6">
           <h1
             className="text-5xl md:text-7xl lg:text-8xl font-light text-architectural mb-6"
