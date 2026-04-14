@@ -151,7 +151,7 @@ const Contact = () => {
                     href={platform.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`group flex items-center gap-4 py-3 px-4 rounded-lg hover:bg-primary/[0.03] transition-all duration-500 border border-transparent hover:border-primary/10 ${
+                    className={`group flex items-center gap-4 py-3 px-4 rounded-lg hover:bg-primary/[0.03] transition-all duration-500 border border-transparent hover:border-primary/10 cursor-pointer ${
                       platformsVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
                     }`}
                     style={{ transitionDelay: `${i * 100 + 200}ms` }}
