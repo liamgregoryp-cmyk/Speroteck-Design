@@ -157,7 +157,7 @@ const Contact = () => {
                     style={{ transitionDelay: `${i * 100 + 200}ms` }}
                   >
                     <span className="w-2 h-2 bg-primary/40 rounded-full group-hover:bg-primary group-hover:shadow-[0_0_8px_hsl(82,75%,42%,0.5)] transition-all duration-300" />
-                    <span className="text-lg">{platform.name}</span>
+                    <span className="text-lg cursor-pointer">{platform.name}</span>
                   </a>
                 ))}
               </div>
