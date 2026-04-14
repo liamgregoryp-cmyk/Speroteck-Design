@@ -29,11 +29,11 @@ const Contact = () => {
   }, []);
 
   const platforms = [
-    "Salesforce Commerce Cloud",
-    "Shopify / Shopify Plus",
-    "BigCommerce",
-    "Magento / Adobe Commerce",
-    "Shopware",
+    { name: "Salesforce Commerce Cloud", url: "https://www.salesforce.com/commerce/" },
+    { name: "Shopify / Shopify Plus", url: "https://www.shopify.com/" },
+    { name: "BigCommerce", url: "https://www.bigcommerce.com/" },
+    { name: "Magento / Adobe Commerce", url: "https://business.adobe.com/products/magento/magento-commerce.html" },
+    { name: "Shopware", url: "https://www.shopware.com/" },
   ];
 
   return (
