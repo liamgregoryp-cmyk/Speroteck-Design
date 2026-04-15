@@ -19,6 +19,9 @@ const Navigation = () => {
           <Link to="/work" className="text-minimal text-muted-foreground hover:text-primary transition-colors duration-300">
             OUR WORK
           </Link>
+          <Link to="/tools" className="text-minimal text-muted-foreground hover:text-primary transition-colors duration-300">
+            TOOLS
+          </Link>
           <Link to="/services" className="text-minimal text-muted-foreground hover:text-primary transition-colors duration-300">
             SERVICES
           </Link>
@@ -52,6 +55,9 @@ const Navigation = () => {
           <div className="container mx-auto px-6 py-6 space-y-4">
             <Link to="/work" onClick={() => setIsMenuOpen(false)} className="block text-minimal text-muted-foreground hover:text-primary transition-colors duration-300">
               OUR WORK
+            </Link>
+            <Link to="/tools" onClick={() => setIsMenuOpen(false)} className="block text-minimal text-muted-foreground hover:text-primary transition-colors duration-300">
+              TOOLS
             </Link>
             <Link to="/services" onClick={() => setIsMenuOpen(false)} className="block text-minimal text-muted-foreground hover:text-primary transition-colors duration-300">
               SERVICES
