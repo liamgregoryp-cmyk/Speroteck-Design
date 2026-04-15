@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
+import claudeLogo from "@/assets/claude-logo.png";
 import { ArrowRight, ExternalLink } from "lucide-react";
 
 const tools = [
@@ -79,6 +80,13 @@ const tools = [
     description: "Leverage AI to generate content, brainstorm ideas, and automate tasks.",
     url: "https://chat.openai.com/",
     icon: "https://www.speroteck.com/wp-content/uploads/2023/08/ChatGPT_logo-1.png",
+    category: "AI",
+  },
+  {
+    name: "Claude",
+    description: "Anthropic's AI assistant for thoughtful analysis, writing, and coding tasks.",
+    url: "https://claude.ai/",
+    icon: claudeLogo,
     category: "AI",
   },
   {
