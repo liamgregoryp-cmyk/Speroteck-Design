@@ -60,15 +60,15 @@ const Contact = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-20">
             <div>
-              <h2
+              <p
                 className={`text-minimal text-primary mb-4 flex items-center gap-3 transition-all duration-700 ${
                   visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
                 }`}
               >
                 <span className={`h-px bg-primary transition-all duration-1000 delay-200 ${visible ? "w-8" : "w-0"}`} />
                 GET IN TOUCH
-              </h2>
-              <h3 className="text-4xl md:text-6xl font-light text-architectural mb-12 overflow-hidden">
+              </p>
+              <h2 className="text-4xl md:text-6xl font-light text-architectural mb-12 overflow-hidden" aria-label="Let's Create the Next Big Thing Together">
                 {"Let's Create the Next".split("").map((char, i) => (
                   <span
                     key={i}
@@ -96,7 +96,7 @@ const Contact = () => {
                     {char === " " ? "\u00A0" : char}
                   </span>
                 ))}
-              </h3>
+              </h2>
 
               <div className="space-y-8">
                 {[

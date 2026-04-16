@@ -35,42 +35,89 @@ const Contact = () => {
     },
   });
 
-  const onSubmit = (data: ContactFormValues) => {
-    console.log("Contact form submitted:", { ...data, phone: data.phone ? "[provided]" : "[not provided]" });
-    setSubmitted(true);
-    toast({
-      title: "Message sent!",
-      description: "We'll get back to you shortly.",
-    });
+  const onSubmit = async (data: ContactFormValues) => {
+    const now = Date.now();
+    if (now - lastAttempt.current < RATE_LIMIT_MS) {
+      toast({
+        title: "Please wait",
+        description: "You just submitted a message. Try again in a moment.",
+        variant: "destructive",
+      });
+      return;
+    }
+    lastAttempt.current = now;
+
+    setIsSubmitting(true);
+    try {
+      const { data: result, error } = await supabase.functions.invoke(
+        "send-contact-email",
+        {
+          body: {
+            firstName: data.firstName,
+            lastName: data.lastName,
+            email: data.email,
+            phone: data.phone ?? "",
+            message: data.message,
+          },
+        }
+      );
+
+      if (error || (result && (result as { error?: string }).error)) {
+        const description =
+          (result as { error?: string } | null)?.error ??
+          "Something went wrong. Please try again.";
+        toast({
+          title: "Unable to send",
+          description,
+          variant: "destructive",
+        });
+        return;
+      }
+
+      setSubmitted(true);
+      toast({
+        title: "Message sent!",
+        description: "We'll get back to you shortly.",
+      });
+    } catch {
+      toast({
+        title: "Unable to send",
+        description: "Network error. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <div className="min-h-screen">
       <Navigation />
+      <main id="main-content">
       <section className="pt-32 pb-32 bg-background">
         <div className="container mx-auto px-6">
           <div className="max-w-7xl mx-auto">
             <div className="grid md:grid-cols-2 gap-20">
               {/* Left side - Info */}
               <div>
-                <h1 className="text-minimal text-primary mb-4">GET IN TOUCH</h1>
-                <h2 className="text-4xl md:text-6xl font-light text-architectural mb-12">
+                <p className="text-minimal text-primary mb-4">GET IN TOUCH</p>
+                <h1 className="text-4xl md:text-6xl font-light text-architectural mb-12">
                   Let's Create the Next
                   <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[hsl(82,75%,55%)]">
                     Big Thing Together
                   </span>
-                </h2>
+                </h1>
 
                 <div className="space-y-8">
                   <div>
-                    <h3 className="text-minimal text-primary mb-2">EMAIL</h3>
+                    <h2 className="text-minimal text-primary mb-2">EMAIL</h2>
                     <a href="mailto:info@speroteck.com" className="text-xl hover:text-primary transition-colors duration-300">
                       info@speroteck.com
                     </a>
                   </div>
                   <div>
-                    <h3 className="text-minimal text-primary mb-2">PHONE</h3>
+                    <h2 className="text-minimal text-primary mb-2">PHONE</h2>
                     <a href="tel:18475089229" className="text-xl hover:text-primary transition-colors duration-300">
                       1 (847) 508-9229
                     </a>
@@ -78,7 +125,7 @@ const Contact = () => {
                 </div>
 
                 <div className="pt-12 border-t border-border mt-12">
-                  <h3 className="text-minimal text-primary mb-6">PLATFORMS WE WORK WITH</h3>
+                  <h2 className="text-minimal text-primary mb-6">PLATFORMS WE WORK WITH</h2>
                   <div className="space-y-4">
                     <a href="https://business.adobe.com/products/magento/magento-commerce.html" target="_blank" rel="noopener noreferrer" className="block text-xl hover:text-primary transition-colors duration-300">Magento / Adobe Commerce</a>
                     <a href="https://www.shopify.com/" target="_blank" rel="noopener noreferrer" className="block text-xl hover:text-primary transition-colors duration-300">Shopify / Shopify Plus</a>
@@ -95,7 +142,7 @@ const Contact = () => {
                     <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
                       <Send className="w-7 h-7 text-primary" />
                     </div>
-                    <h3 className="text-2xl font-light">Thank you!</h3>
+                    <h2 className="text-2xl font-light">Thank you!</h2>
                     <p className="text-muted-foreground max-w-sm">
                       Your message has been received. We'll get back to you as soon as possible.
                     </p>
@@ -105,7 +152,7 @@ const Contact = () => {
                   </div>
                 ) : (
                   <div className="rounded-2xl border border-border p-8 md:p-10">
-                    <h3 className="text-2xl font-light mb-8">Start a Conversation</h3>
+                    <h2 className="text-2xl font-light mb-8">Start a Conversation</h2>
                     <Form {...form}>
                       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                         <div className="grid grid-cols-2 gap-4">
@@ -181,9 +228,10 @@ const Contact = () => {
 
                         <Button
                           type="submit"
-                          className="w-full bg-primary text-primary-foreground hover:shadow-[0_0_40px_hsl(82,75%,42%,0.4)] transition-all duration-300 uppercase tracking-wide font-semibold"
+                          disabled={isSubmitting}
+                          className="w-full bg-primary text-primary-foreground hover:shadow-[0_0_40px_hsl(82,75%,42%,0.4)] transition-all duration-300 uppercase tracking-wide font-semibold disabled:opacity-60"
                         >
-                          Send Message
+                          {isSubmitting ? "Sending..." : "Send Message"}
                           <Send className="w-4 h-4 ml-2" />
                         </Button>
                       </form>
@@ -199,6 +247,7 @@ const Contact = () => {
           </div>
         </div>
       </section>
+      </main>
     </div>
   );
 };
