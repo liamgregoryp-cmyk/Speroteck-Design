@@ -8,7 +8,14 @@ const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+    <>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded focus:outline-none focus:ring-2 focus:ring-ring"
+      >
+        Skip to main content
+      </a>
+    <nav aria-label="Primary" className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 transition-all duration-300 hover:scale-110 origin-left group">
           <SperoteckLogo size={32} className="group-hover:drop-shadow-[0_0_8px_hsl(82,75%,42%,0.5)]" />
@@ -45,13 +52,16 @@ const Navigation = () => {
           size="sm"
           className="md:hidden"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-nav"
         >
-          {isMenuOpen ? '✕' : '☰'}
+          <span aria-hidden="true">{isMenuOpen ? '✕' : '☰'}</span>
         </Button>
       </div>
 
       {isMenuOpen && (
-        <div className="md:hidden bg-background border-b border-border">
+        <div id="mobile-nav" className="md:hidden bg-background border-b border-border">
           <div className="container mx-auto px-6 py-6 space-y-4">
             <Link to="/work" onClick={() => setIsMenuOpen(false)} className="block text-minimal text-muted-foreground hover:text-primary transition-colors duration-300">
               OUR WORK
@@ -79,6 +89,7 @@ const Navigation = () => {
         </div>
       )}
     </nav>
+    </>
   );
 };
 
