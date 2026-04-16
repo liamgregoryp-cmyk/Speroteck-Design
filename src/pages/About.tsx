@@ -51,10 +51,10 @@ const About = () => {
             <div className="max-w-7xl mx-auto">
               <div className="grid md:grid-cols-2 gap-20 items-center">
                 <div>
-                  <h1 className="text-minimal text-primary mb-4">ABOUT</h1>
-                  <h2 className="text-4xl md:text-6xl font-light text-architectural mb-12">
+                  <p className="text-minimal text-primary mb-4">ABOUT</p>
+                  <h1 className="text-4xl md:text-6xl font-light text-architectural mb-12">
                     eCommerce Excellence
-                  </h2>
+                  </h1>
 
                   <div className="space-y-8">
                     <p className="text-lg text-muted-foreground leading-relaxed">
@@ -73,18 +73,18 @@ const About = () => {
 
                 <div className="space-y-12">
                   <div>
-                    <h3 className="text-minimal text-primary mb-6">EXPERTISE</h3>
+                    <h2 className="text-minimal text-primary mb-6">EXPERTISE</h2>
                     <div className="space-y-6">
                       <div className="border-l-2 border-primary pl-6">
-                        <h4 className="text-lg font-medium mb-2">Platform Specialists</h4>
+                        <h3 className="text-lg font-medium mb-2">Platform Specialists</h3>
                         <p className="text-muted-foreground">Certified in Salesforce Commerce Cloud, Shopify, BigCommerce, Magento & Shopware</p>
                       </div>
                       <div className="border-l-2 border-primary pl-6">
-                        <h4 className="text-lg font-medium mb-2">Full Lifecycle</h4>
+                        <h3 className="text-lg font-medium mb-2">Full Lifecycle</h3>
                         <p className="text-muted-foreground">Architecture, development, design, optimization, and ongoing 24/7 support</p>
                       </div>
                       <div className="border-l-2 border-primary pl-6">
-                        <h4 className="text-lg font-medium mb-2">Client Partnership</h4>
+                        <h3 className="text-lg font-medium mb-2">Client Partnership</h3>
                         <p className="text-muted-foreground">Long-term relationships built on trust, transparency, and measurable results</p>
                       </div>
                     </div>
@@ -93,11 +93,11 @@ const About = () => {
                   <div className="pt-8 border-t border-border">
                     <div className="grid grid-cols-2 gap-8">
                       <div>
-                        <h3 className="text-minimal text-primary mb-2">EXPERIENCE</h3>
+                        <p className="text-minimal text-primary mb-2">EXPERIENCE</p>
                         <p className="text-xl">25+ Years</p>
                       </div>
                       <div>
-                        <h3 className="text-minimal text-primary mb-2">CLIENTS</h3>
+                        <p className="text-minimal text-primary mb-2">CLIENTS</p>
                         <p className="text-xl">500+</p>
                       </div>
                     </div>
@@ -116,10 +116,10 @@ const About = () => {
             <div className="max-w-7xl mx-auto">
               {/* Intro */}
               <div className="max-w-3xl mb-20">
-                <h1 className="text-minimal text-primary mb-4">GIVING BACK</h1>
-                <h2 className="text-4xl md:text-6xl font-light text-architectural mb-12">
+                <p className="text-minimal text-primary mb-4">GIVING BACK</p>
+                <h1 className="text-4xl md:text-6xl font-light text-architectural mb-12">
                   Social Responsibility
-                </h2>
+                </h1>
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   At Speroteck, we believe technology can be a force for good. Beyond building
                   exceptional eCommerce solutions, we are committed to making a meaningful

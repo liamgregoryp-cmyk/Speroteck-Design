@@ -84,15 +84,15 @@ const About = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-20 items-center">
             <div>
-              <h2
+              <p
                 className={`text-minimal text-primary mb-4 flex items-center gap-3 transition-all duration-700 ${
                   visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
                 }`}
               >
                 <span className={`h-px bg-primary transition-all duration-1000 delay-200 ${visible ? "w-8" : "w-0"}`} />
                 ABOUT
-              </h2>
-              <h3 className="text-4xl md:text-6xl font-light text-architectural mb-12 overflow-hidden">
+              </p>
+              <h2 className="text-4xl md:text-6xl font-light text-architectural mb-12 overflow-hidden" aria-label="eCommerce Excellence">
                 {"eCommerce ".split("").map((char, i) => (
                   <span
                     key={i}
@@ -120,7 +120,7 @@ const About = () => {
                     {char}
                   </span>
                 ))}
-              </h3>
+              </h2>
 
               <div className="space-y-6">
                 <p
@@ -149,7 +149,7 @@ const About = () => {
                   }`}
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.05] to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500" />
-                  <h4 className="text-minimal text-primary mb-2">EXPERIENCE</h4>
+                  <p className="text-minimal text-primary mb-2">EXPERIENCE</p>
                   <p className={`text-4xl font-light text-foreground ${statsVisible ? "counter-glow" : ""}`}>
                     {counters.years}+ <span className="text-lg text-muted-foreground">Years</span>
                   </p>
@@ -160,7 +160,7 @@ const About = () => {
                   }`}
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.05] to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500" />
-                  <h4 className="text-minimal text-primary mb-2">CLIENTS</h4>
+                  <p className="text-minimal text-primary mb-2">CLIENTS</p>
                   <p className={`text-4xl font-light text-foreground transition-transform duration-300 ease-out ${statsVisible ? "counter-glow" : ""} ${clientsPop ? "scale-125" : "scale-100"}`}>
                     {counters.clients}+
                   </p>
@@ -169,10 +169,10 @@ const About = () => {
             </div>
 
             <div className={`space-y-6 transition-all duration-1000 delay-300 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
-              <h4 className="text-minimal text-primary mb-6 flex items-center gap-3">
+              <h3 className="text-minimal text-primary mb-6 flex items-center gap-3">
                 <span className={`h-px bg-primary transition-all duration-1000 delay-500 ${visible ? "w-8" : "w-0"}`} />
                 EXPERTISE
-              </h4>
+              </h3>
               {expertise.map((item, index) => (
                 <div
                   key={index}
@@ -181,7 +181,7 @@ const About = () => {
                   }`}
                   style={{ transitionDelay: `${index * 150 + 700}ms` }}
                 >
-                  <h5 className="text-lg font-medium mb-2 group-hover:text-primary transition-colors duration-300">{item.title}</h5>
+                  <h4 className="text-lg font-medium mb-2 group-hover:text-primary transition-colors duration-300">{item.title}</h4>
                   <p className="text-muted-foreground text-sm">{item.desc}</p>
                 </div>
               ))}
