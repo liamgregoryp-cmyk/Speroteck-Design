@@ -90,15 +90,15 @@ const Services = () => {
             className="mb-20"
             data-index="-1"
           >
-            <h2
+            <p
               className={`text-minimal text-primary mb-4 flex items-center gap-3 transition-all duration-700 ${
                 headerVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
               }`}
             >
               <span className={`h-px bg-primary transition-all duration-1000 delay-200 ${headerVisible ? "w-8" : "w-0"}`} />
               SERVICES
-            </h2>
-            <h3 className="text-4xl md:text-6xl font-light text-architectural overflow-hidden">
+            </p>
+            <h2 className="text-4xl md:text-6xl font-light text-architectural overflow-hidden" aria-label="What We Do">
               {"What We ".split("").map((char, i) => (
                 <span
                   key={i}
@@ -125,7 +125,7 @@ const Services = () => {
                   {char}
                 </span>
               ))}
-            </h3>
+            </h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-x-16 gap-y-12">
@@ -147,9 +147,9 @@ const Services = () => {
                     </span>
                   </div>
                   <div>
-                    <h4 className="text-xl font-medium mb-2 text-architectural group-hover:text-primary transition-colors duration-500">
+                    <h3 className="text-xl font-medium mb-2 text-architectural group-hover:text-primary transition-colors duration-500">
                       {service.title}
-                    </h4>
+                    </h3>
                     <p className="text-xs text-primary/60 mb-3 font-medium tracking-wider uppercase">
                       {service.highlight}
                     </p>

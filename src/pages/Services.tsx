@@ -59,9 +59,9 @@ const Services = () => {
                       {service.number}
                     </span>
                     <div>
-                      <h3 className="text-2xl font-light mb-4 text-architectural group-hover:text-primary transition-colors duration-500">
+                      <h2 className="text-2xl font-light mb-4 text-architectural group-hover:text-primary transition-colors duration-500">
                         {service.title}
-                      </h3>
+                      </h2>
                       <p className="text-muted-foreground leading-relaxed">
                         {service.description}
                       </p>
