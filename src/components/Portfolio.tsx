@@ -134,15 +134,15 @@ const Portfolio = () => {
       <div className="container mx-auto px-6">
         <div className="max-w-7xl mx-auto">
           <div ref={headerRef} className="mb-20">
-            <h2
+            <p
               className={`text-minimal text-primary mb-4 flex items-center gap-3 transition-all duration-700 ${
                 headerVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
               }`}
             >
               <span className={`h-px bg-primary transition-all duration-1000 delay-200 ${headerVisible ? "w-8" : "w-0"}`} />
               CLIENT STORIES
-            </h2>
-            <h3 className="text-4xl md:text-6xl font-light text-architectural overflow-hidden">
+            </p>
+            <h2 className="text-4xl md:text-6xl font-light text-architectural overflow-hidden" aria-label="Our Work">
               {"Our ".split("").map((char, i) => (
                 <span
                   key={i}
@@ -169,7 +169,7 @@ const Portfolio = () => {
                   {char}
                 </span>
               ))}
-            </h3>
+            </h2>
           </div>
 
           <div className="relative">
@@ -242,15 +242,15 @@ const Portfolio = () => {
 
           {/* Client Testimonials */}
           <div ref={reviewsHeaderRef} className="mt-32">
-            <h2
+            <p
               className={`text-minimal text-primary mb-4 flex items-center gap-3 transition-all duration-700 ${
                 reviewsHeaderVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
               }`}
             >
               <span className={`h-px bg-primary transition-all duration-1000 delay-200 ${reviewsHeaderVisible ? "w-8" : "w-0"}`} />
               WHAT OUR CLIENTS SAY
-            </h2>
-            <h3 className="text-4xl md:text-5xl font-light text-architectural mb-16 overflow-hidden">
+            </p>
+            <h2 className="text-4xl md:text-5xl font-light text-architectural mb-16 overflow-hidden" aria-label="Client Reviews">
               {"Client ".split("").map((char, i) => (
                 <span
                   key={i}
@@ -277,7 +277,7 @@ const Portfolio = () => {
                   {char}
                 </span>
               ))}
-            </h3>
+            </h2>
 
             <div className="relative overflow-hidden mt-16">
               <div className="grid md:grid-cols-2 gap-6">
