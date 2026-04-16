@@ -3,7 +3,7 @@
 //
 // Required secrets (set via `supabase secrets set <NAME>=<VALUE>`):
 //   RESEND_API_KEY    Resend API key (https://resend.com/api-keys)
-//   CONTACT_TO_EMAIL  Destination address (defaults to ethanmrubenstein@gmail.com)
+//   CONTACT_TO_EMAIL  Destination address (defaults to Galia.polyanovsky@speroteck.com)
 //   CONTACT_FROM_EMAIL Verified sender on your Resend domain (e.g. contact@yourdomain.com)
 
 // deno-lint-ignore-file no-explicit-any
@@ -83,7 +83,7 @@ Deno.serve(async (req: Request) => {
   const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
   const resendKey = Deno.env.get("RESEND_API_KEY");
   const toEmail =
-    Deno.env.get("CONTACT_TO_EMAIL") ?? "ethanmrubenstein@gmail.com";
+    Deno.env.get("CONTACT_TO_EMAIL") ?? "Galia.polyanovsky@speroteck.com";
   const fromEmail =
     Deno.env.get("CONTACT_FROM_EMAIL") ?? "onboarding@resend.dev";
 
