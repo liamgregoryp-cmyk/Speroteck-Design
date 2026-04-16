@@ -37,14 +37,15 @@ const Services = () => {
   return (
     <div className="min-h-screen">
       <Navigation />
+      <main id="main-content">
       <section className="pt-32 pb-32 bg-background">
         <div className="container mx-auto px-6">
           <div className="max-w-7xl mx-auto">
             <div className="mb-20">
-              <h1 className="text-minimal text-primary mb-4">SERVICES</h1>
-              <h2 className="text-4xl md:text-6xl font-light text-architectural">
+              <p className="text-minimal text-primary mb-4">SERVICES</p>
+              <h1 className="text-4xl md:text-6xl font-light text-architectural">
                 What We Do
-              </h2>
+              </h1>
               <p className="text-xl text-muted-foreground mt-8 max-w-3xl">
                 We offer an array of services to fit your eCommerce needs and budget. 
                 From large-scale implementations to small ad-hoc break/fix requests.
@@ -73,6 +74,7 @@ const Services = () => {
           </div>
         </div>
       </section>
+      </main>
     </div>
   );
 };

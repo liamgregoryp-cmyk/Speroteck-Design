@@ -14,6 +14,7 @@ const About = () => {
   return (
     <div className="min-h-screen">
       <Navigation />
+      <main id="main-content">
       <section className="pt-32 pb-8 bg-background">
         <div className="container mx-auto px-6">
           <div className="max-w-7xl mx-auto">
@@ -287,6 +288,7 @@ const About = () => {
           </div>
         </section>
       )}
+      </main>
     </div>
   );
 };

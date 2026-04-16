@@ -10,21 +10,21 @@ const BlogPost = () => {
     return (
       <div className="min-h-screen bg-background">
         <Navigation />
-        <div className="pt-32 pb-32">
+        <main id="main-content" className="pt-32 pb-32">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto text-center">
               <h1 className="text-4xl md:text-6xl font-light text-architectural mb-8">
                 Post Not Found
               </h1>
-              <Link 
-                to="/blog" 
+              <Link
+                to="/blog"
                 className="text-minimal text-foreground hover:text-muted-foreground transition-colors duration-300"
               >
                 ← BACK TO BLOG
               </Link>
             </div>
           </div>
-        </div>
+        </main>
       </div>
     );
   }
@@ -32,7 +32,7 @@ const BlogPost = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+      <main id="main-content">
       {/* Article Header */}
       <article className="pt-32 pb-32">
         <div className="container mx-auto px-6">
@@ -138,6 +138,7 @@ const BlogPost = () => {
           </div>
         </div>
       </article>
+      </main>
     </div>
   );
 };

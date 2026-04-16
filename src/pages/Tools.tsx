@@ -205,7 +205,7 @@ const Tools = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-
+      <main id="main-content">
       {/* Hero Section */}
       <section className="relative pt-32 pb-16 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
@@ -445,6 +445,7 @@ const Tools = () => {
           </Link>
         </div>
       </section>
+      </main>
     </div>
   );
 };

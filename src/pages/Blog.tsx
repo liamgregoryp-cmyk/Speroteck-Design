@@ -16,7 +16,7 @@ const Blog = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+      <main id="main-content">
       <section className="pt-32 pb-20">
         <div className="container mx-auto px-6">
           <div className="max-w-7xl mx-auto">
@@ -124,9 +124,14 @@ const Blog = () => {
               Subscribe to our newsletter for the latest insights on eCommerce and digital commerce
             </p>
             <form onSubmit={subscribe} className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
-              <input 
-                type="email" 
+              <label htmlFor="newsletter-email" className="sr-only">Email address</label>
+              <input
+                id="newsletter-email"
+                name="email"
+                type="email"
+                autoComplete="email"
                 placeholder="Enter your email"
+                aria-label="Email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="flex-1 px-6 py-4 bg-background border border-border text-foreground placeholder:text-muted-foreground"
@@ -143,6 +148,7 @@ const Blog = () => {
           </div>
         </div>
       </section>
+      </main>
     </div>
   );
 };

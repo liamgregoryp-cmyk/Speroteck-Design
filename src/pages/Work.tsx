@@ -107,7 +107,7 @@ const Work = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+      <main id="main-content">
       <section className="pt-32 pb-20">
         <div className="container mx-auto px-6">
           <div className="max-w-7xl mx-auto">
@@ -215,9 +215,7 @@ const Work = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl md:text-6xl font-light text-architectural mb-8">
-              Ready to Start
-              <br />
-              Your Project?
+              Ready to Start <br /> Your Project?
             </h2>
             <p className="text-xl text-muted-foreground mb-12">
               Let's discuss how we can bring your eCommerce vision to life
@@ -231,6 +229,7 @@ const Work = () => {
           </div>
         </div>
       </section>
+      </main>
     </div>
   );
 };
