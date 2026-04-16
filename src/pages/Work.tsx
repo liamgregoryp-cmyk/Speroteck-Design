@@ -5,7 +5,6 @@ import project1 from "@/assets/project-1.jpg";
 import projectDiorCologne from "@/assets/project-dior-cologne.jpg";
 import project2 from "@/assets/project-2.jpg";
 import project3 from "@/assets/project-3.jpg";
-import project4 from "@/assets/project-4.jpg";
 import projectSoundoftristate from "@/assets/project-soundoftristate.jpg";
 
 const Work = () => {
