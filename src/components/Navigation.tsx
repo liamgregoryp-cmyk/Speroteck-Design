@@ -19,7 +19,7 @@ const Navigation = () => {
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 transition-all duration-300 hover:scale-110 origin-left group">
           <SperoteckLogo size={32} className="group-hover:drop-shadow-[0_0_8px_hsl(82,75%,42%,0.5)]" />
-          <span className="text-sm text-foreground font-extrabold tracking-widest uppercase group-hover:text-primary">SPEROTECK DESIGN</span>
+          <span className="text-sm text-foreground font-extrabold tracking-widest uppercase group-hover:text-primary">SPEROTECK</span>
         </Link>
         
         <div className="hidden md:flex items-center space-x-12">
